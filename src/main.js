@@ -461,6 +461,12 @@ function setupWhatsAppFloat() {
   btn.setAttribute('aria-label', 'WhatsApp ile bize yazın');
   btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
   document.body.appendChild(btn);
+
+  // Keep the button above the cookie banner while it is visible
+  const banner = document.getElementById('cookie-banner');
+  if (banner) {
+    btn.style.bottom = (banner.offsetHeight + 20) + 'px';
+  }
 }
 
 // Newsletter forms (footer, all pages)
@@ -587,6 +593,10 @@ function setupLanguage() {
     document.title = localLang === 'tr' ? "Havalimanı Transfer Hizmetleri | ABS Rent A Car" : "Airport Transfer Services | ABS Rent A Car";
   } else if (pathname.includes('about.html')) {
     document.title = localLang === 'tr' ? "Hakkımızda | ABS Rent A Car" : "About Us | ABS Rent A Car";
+  } else if (pathname.includes('blog.html')) {
+    document.title = "Blog | ABS Rent A Car";
+  } else if (pathname.includes('legal.html')) {
+    document.title = localLang === 'tr' ? "Yasal Bilgiler | ABS Rent A Car" : "Legal Information | ABS Rent A Car";
   } else {
     document.title = localLang === 'tr' ? "ABS Rent A Car & Transfer | Alanya Araç Kiralama" : "ABS Rent A Car & Transfer | Alanya Car Rental";
   }
@@ -1382,6 +1392,9 @@ function setupCookieConsent() {
     localStorage.setItem('abs_cookie_consent', choice);
     banner.classList.add('cookie-hidden');
     banner.addEventListener('animationend', () => banner.remove(), { once: true });
+    // Return the WhatsApp button to its normal spot
+    const floatBtn = document.querySelector('.whatsapp-float');
+    if (floatBtn) floatBtn.style.bottom = '';
   };
 
   document.getElementById('cookie-accept').addEventListener('click', () => dismiss('accepted'));

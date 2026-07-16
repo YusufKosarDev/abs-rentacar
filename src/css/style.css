@@ -2128,12 +2128,61 @@ a {
   flex-shrink: 0;
 }
 
+/* TRANSFER / STAT CARDS (transfer.html + about.html) */
+.transfer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.transfer-card {
+  background: #ffffff;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius-lg);
+  padding: 35px;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.transfer-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-premium);
+}
+
+.transfer-route {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+
+.transfer-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  font-family: var(--font-heading);
+  margin-bottom: 20px;
+}
+
+.transfer-details-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+  color: var(--text-body);
+}
+
 /* WHATSAPP FLOAT BUTTON */
 .whatsapp-float {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  z-index: 9998;
+  z-index: 9999;
+  transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 60px;
   height: 60px;
   border-radius: var(--radius-full);
