@@ -228,7 +228,7 @@ const translations = {
     form_error: "Message could not be sent. Please try again or contact us via WhatsApp.",
     form_sending: "Sending..."
   }
-};;
+};
 
 let currentLang = localStorage.getItem('abs_lang') || 'tr';
 
@@ -410,29 +410,13 @@ function setupMobileMenu() {
   
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
-      const isVisible = navLinks.style.display === 'flex';
-      navLinks.style.display = isVisible ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '80px';
-      navLinks.style.left = '0';
-      navLinks.style.width = '100%';
-      navLinks.style.background = 'rgba(18, 18, 18, 0.95)';
-      navLinks.style.padding = '20px 0';
-      navLinks.style.borderBottom = '1px solid var(--border-glass)';
+      navLinks.classList.toggle('open');
     });
-    
-    // Close menu on resize
+
+    // Close menu when switching back to desktop layout
     window.addEventListener('resize', () => {
       if (window.innerWidth > 992) {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'row';
-        navLinks.style.position = 'static';
-        navLinks.style.background = 'transparent';
-        navLinks.style.padding = '0';
-        navLinks.style.borderBottom = 'none';
-      } else {
-        navLinks.style.display = 'none';
+        navLinks.classList.remove('open');
       }
     });
   }

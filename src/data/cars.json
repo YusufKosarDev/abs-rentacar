@@ -26,14 +26,22 @@
     },
     "image": "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
     "images": [
-      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
-      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1449965408869-ebd13bc0c322?auto=format&fit=crop&w=800&q=80"
+      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png"
     ],
     "description": "Şehir içi ve uzun yol kullanımları için son derece ekonomik, konforlu ve geniş bagaj hacmine sahip aile aracı.",
     "descriptionEng": "An extremely economical, comfortable family car with a large luggage volume for city and long-distance driving.",
-    "features": ["Sınırsız KM", "Muafiyetli Kasko", "7/24 Yol Yardımı", "Bebek Koltuğu (Ücretli)"],
-    "featuresEng": ["Unlimited KM", "Collision Damage Waiver", "24/7 Roadside Assistance", "Baby Seat (Paid)"]
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
   },
   {
     "id": "fiat-egea-cross",
@@ -62,14 +70,22 @@
     },
     "image": "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
     "images": [
-      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
-      "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=800&q=80"
+      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png"
     ],
     "description": "Yüksek sürüş pozisyonu ve geniş iç hacmiyle Alanya tatilinizde engebeli yollarda bile konforlu sürüş sunar.",
     "descriptionEng": "With its high driving position and spacious interior, it offers a comfortable drive even on rough roads during your Alanya holiday.",
-    "features": ["Sınırsız KM", "Muafiyetli Kasko", "7/24 Yol Yardımı", "Ek Sürücü Ücretsiz"],
-    "featuresEng": ["Unlimited KM", "Collision Damage Waiver", "24/7 Roadside Assistance", "Free Extra Driver"]
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Ek Sürücü Ücretsiz"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Free Extra Driver"
+    ]
   },
   {
     "id": "suzuki-vitara",
@@ -98,14 +114,22 @@
     },
     "image": "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
     "images": [
-      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
-      "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80"
+      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png"
     ],
     "description": "Çevre dostu hibrit motor teknolojisi, şık tasarımı ve zengin donanımı ile tatilinize keyif katacak modern SUV.",
     "descriptionEng": "Eco-friendly hybrid engine technology, stylish design, and rich equipment, a modern SUV that will add joy to your holiday.",
-    "features": ["Sınırsız KM", "Full Kasko", "7/24 Yol Yardımı", "Geri Görüş Kamerası"],
-    "featuresEng": ["Unlimited KM", "Full Insurance", "24/7 Roadside Assistance", "Rear View Camera"]
+    "features": [
+      "Sınırsız KM",
+      "Full Kasko",
+      "7/24 Yol Yardımı",
+      "Geri Görüş Kamerası"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Full Insurance",
+      "24/7 Roadside Assistance",
+      "Rear View Camera"
+    ]
   },
   {
     "id": "dacia-duster",
@@ -134,14 +158,22 @@
     },
     "image": "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
     "images": [
-      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80"
+      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png"
     ],
     "description": "Geniş bagaj hacmi, yüksek yapısı ve güçlü motoru ile kalabalık aileler ve doğa gezileri için son derece ideal.",
     "descriptionEng": "Spacious luggage volume, high stance, and powerful engine, extremely ideal for large families and nature trips.",
-    "features": ["Sınırsız KM", "Muafiyetli Kasko", "7/24 Yol Yardımı", "Geniş Bagaj"],
-    "featuresEng": ["Unlimited KM", "Collision Damage Waiver", "24/7 Roadside Assistance", "Large Luggage"]
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Geniş Bagaj"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Large Luggage"
+    ]
   },
   {
     "id": "peugeot-2008",
@@ -170,13 +202,21 @@
     },
     "image": "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
     "images": [
-      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png",
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=800&q=80"
+      "https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png"
     ],
     "description": "Fransız şıklığı ve i-Cockpit teknolojisi ile sürüş keyfini zirveye taşıyan, konforlu ve dinamik crossover.",
     "descriptionEng": "A comfortable and dynamic crossover that elevates driving pleasure with French elegance and i-Cockpit technology.",
-    "features": ["Sınırsız KM", "Full Kasko", "7/24 Yol Yardımı", "Şerit Takip Asistanı"],
-    "featuresEng": ["Unlimited KM", "Full Insurance", "24/7 Roadside Assistance", "Lane Keeping Assist"]
+    "features": [
+      "Sınırsız KM",
+      "Full Kasko",
+      "7/24 Yol Yardımı",
+      "Şerit Takip Asistanı"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Full Insurance",
+      "24/7 Roadside Assistance",
+      "Lane Keeping Assist"
+    ]
   }
 ]

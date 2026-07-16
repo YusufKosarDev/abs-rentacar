@@ -1007,7 +1007,19 @@ a {
   .nav-links {
     display: none;
   }
-  
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(18, 18, 18, 0.95);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-glass);
+  }
+
   .menu-toggle {
     display: block;
   }
