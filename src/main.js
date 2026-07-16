@@ -449,7 +449,42 @@ document.addEventListener('DOMContentLoaded', () => {
   setupQuickBookingForm();
   setupNewsletterForms();
   setupWhatsAppFloat();
+  setupConversionTracking();
 });
+
+// Vercel Web Analytics custom events for WhatsApp/phone conversions
+function trackEvent(name, data) {
+  if (typeof window.va === 'function') {
+    window.va('event', { name, data });
+  }
+}
+
+function setupConversionTracking() {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a, button');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    const page = window.location.pathname;
+
+    if (href.includes('wa.me') || href.includes('api.whatsapp.com')) {
+      const source = link.classList.contains('whatsapp-float') ? 'float_button' : 'link';
+      trackEvent('whatsapp_click', { page, source });
+    } else if (href.startsWith('tel:')) {
+      trackEvent('phone_click', { page });
+    } else if (href.startsWith('mailto:')) {
+      trackEvent('email_click', { page });
+    } else if (link.classList.contains('book-transfer')) {
+      trackEvent('whatsapp_click', { page, source: 'transfer_booking' });
+    }
+  });
+
+  // Booking form submissions also open WhatsApp
+  const quickForm = document.getElementById('quick-booking-form');
+  if (quickForm) {
+    quickForm.addEventListener('submit', () => trackEvent('whatsapp_click', { page: '/', source: 'quick_booking_form' }));
+  }
+}
 
 // Fixed WhatsApp contact button (all pages)
 function setupWhatsAppFloat() {
@@ -1092,6 +1127,7 @@ Could you please confirm the availability and total price? Thank you.`;
     // WhatsApp URL Redirect
     const encodedText = encodeURIComponent(message);
     const phoneNumber = "905323318418"; // Target ABS Rent A Car WhatsApp Number
+    trackEvent('whatsapp_click', { page: window.location.pathname, source: 'car_details_booking', car: car.id });
     window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`, '_blank');
   });
 
