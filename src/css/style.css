@@ -2128,6 +2128,38 @@ a {
   flex-shrink: 0;
 }
 
+/* WHATSAPP FLOAT BUTTON */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9998;
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  background: #25d366;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+  transition: var(--transition-smooth);
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: #20ba5a;
+}
+
+@media (max-width: 576px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 54px;
+    height: 54px;
+  }
+}
+
 /* RESPONSIVE LAYOUT BREAKPOINTS */
 @media (max-width: 991px) {
   .booking-form {

@@ -116,7 +116,74 @@ const translations = {
     spam_blocked: "Gönderim engellendi. Lütfen formu normal şekilde doldurun.",
     form_success: "Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.",
     form_error: "Mesaj gönderilemedi. Lütfen tekrar deneyin veya WhatsApp üzerinden ulaşın.",
-    form_sending: "Gönderiliyor..."
+    form_sending: "Gönderiliyor...",
+    home_about_title: "Güvenilir araç kiralama partneriniz",
+    home_about_p: "ABS Rent A Car, 2011'den bu yana Alanya ve çevre bölgelerde ekonomikten lükse geniş bir araç yelpazesiyle hizmet veren güvenilir kiralama partnerinizdir.",
+    feat_booking_title: "Kolay Rezervasyon Süreci",
+    feat_booking_desc: "WhatsApp veya web sitemiz üzerinden birkaç adımda hızlıca araç kiralayabilirsiniz.",
+    feat_locations_title: "Uygun Teslim & Alış Noktaları",
+    feat_locations_desc: "Alanya Merkez, Konaklı ve her iki havalimanında 7/24 teslim ve alış hizmeti.",
+    badge_services: "Hizmetlerimiz",
+    services_title: "Geniş yelpazede kiralama hizmetlerimizi keşfedin",
+    svc1_title: "Şoförlü Araç Kiralama",
+    svc1_desc: "Profesyonel ve deneyimli şoförlerimiz eşliğinde konforlu seyahat deneyimi.",
+    svc2_title: "Kurumsal Kiralama",
+    svc2_desc: "Şirketlere özel uzun dönem kiralama paketleri ve kurumsal filo çözümleri.",
+    svc3_title: "Havalimanı Transfer",
+    svc3_desc: "Gazipaşa ve Antalya havalimanlarından VIP Mercedes Vito ile konforlu transfer.",
+    svc4_title: "Kasko & Sigorta Dahil",
+    svc4_desc: "Tüm araçlarımız muafiyetli kasko, yol yardımı ve sınırsız kilometre dahildir.",
+    btn_all_services: "Tüm Hizmetleri Gör",
+    badge_fleet: "Araç Filomuz",
+    badge_how: "Nasıl Çalışır",
+    how_title: "Zahmetsiz deneyim için basitleştirilmiş süreçler",
+    how_p: "Araç kiralama sürecimizi olabildiğince basit ve hızlı tuttuk.",
+    step1_title: "Göz Atın & Seçin",
+    step1_desc: "Web sitemiz üzerinden ihtiyacınıza uygun aracı seçin. Filo sayfamızda ekonomikten lükse tüm araçları karşılaştırabilirsiniz.",
+    step2_title: "Rezervasyon Yapın",
+    step2_desc: "WhatsApp üzerinden veya iletişim formumuz ile hızlıca rezervasyonunuzu onaylayın. Ön ödeme gerekmez.",
+    step3_title: "Teslim Alın & Keyfini Çıkarın",
+    step3_desc: "Seçtiğiniz lokasyonda aracınızı teslim alın ve tatilinizin keyfini çıkarın. 7/24 yol yardımı her zaman yanınızda.",
+    video_title: "ABS Rent A Car ile araç kiralamanın kolaylığını ve konforunu keşfedin",
+    badge_why: "Neden Bizi Seçmelisiniz",
+    why_title: "İhtiyaçlarınız için eşsiz kalite ve hizmet",
+    why1_title: "Geniş Filo Seçenekleri",
+    why1_desc: "Ekonomikten lükse, sedan'dan SUV'a 50'den fazla araç seçeneği ile herkese uygun çözümler sunuyoruz.",
+    why2_title: "Üstün Müşteri Hizmeti",
+    why2_desc: "7/24 ulaşılabilir destek ekibimiz, WhatsApp ve telefon ile her an yanınızda.",
+    why3_title: "Uygun Lokasyonlar",
+    why3_desc: "Alanya Merkez, Konaklı ve her iki havalimanında teslim-alış noktalarımız mevcuttur.",
+    why4_title: "Güvenilirlik & Güvenlik",
+    why4_desc: "Tüm araçlarımız düzenli bakımlı, kaskolu ve hijyen kurallarına uygun olarak hazırlanmaktadır.",
+    badge_testimonials: "Müşteri Yorumları",
+    testimonials_title: "Müşterilerimiz bizim hakkımızda ne diyor",
+    cta_badge: "Yola çıkmaya hazır mısınız?",
+    cta_title: "Aracınızı bugün rezerve edin!",
+    cta_p: "Dost canlısı müşteri hizmetleri ekibimiz size yardımcı olmak için burada. İstediğiniz zaman bize ulaşın.",
+    badge_blog: "Son Makaleler",
+    blog_title: "Bir sonraki yolculuğunuz için bilgilenin ve ilham alın",
+    blog1_title: "Alanya'da Keşfedilmesi Gereken 5 Rota",
+    blog1_desc: "Alanya ve çevresinde araçla keşfedebileceğiniz en güzel 5 tatil rotasını sizler için derledik.",
+    blog2_title: "İlk Kez Araç Kiralarken Bilmeniz Gerekenler",
+    blog2_desc: "Yurt dışında veya tatilde ilk kez araç kiralayacaklar için önemli ipuçları ve dikkat edilmesi gereken noktalar.",
+    blog3_title: "Tatilde SUV mu Sedan mı? Hangisini Seçmeli",
+    blog3_desc: "Tatilinize uygun aracı seçerken göz önünde bulundurmanız gereken faktörler ve avantaj-dezavantaj karşılaştırması.",
+    btn_read_more: "Devamını Oku",
+    footer_legal: "Yasal",
+    legal_terms: "Kullanım Şartları",
+    legal_privacy: "Gizlilik Politikası",
+    legal_disclaimer: "Yasal Uyarı",
+    legal_kvkk: "KVKK Aydınlatma Metni",
+    footer_quick: "Hızlı Menü",
+    footer_newsletter: "E-Bülten",
+    footer_contact: "İletişim Bilgileri",
+    footer_about: "Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde kesintisiz 7/24 kaliteli kiralama ve güvenli transfer hizmetleri sunmaktayız.",
+    footer_newsletter_p: "Kampanyalardan ve özel indirimlerden haberdar olmak için e-bültenimize kaydolun.",
+    ph_email: "E-posta adresiniz",
+    ph_fullname: "Ad Soyad girin",
+    footer_rights: "&copy; 2026 ABS Rent A Car & Transfer. Tüm hakları saklıdır.",
+    newsletter_ok: "E-bülten kaydınız alındı, teşekkürler!",
+    newsletter_err: "Kayıt şu an yapılamadı. Lütfen WhatsApp üzerinden bize ulaşın."
   },
   en: {
     brand_name: "ABS RENT A CAR",
@@ -226,11 +293,94 @@ const translations = {
     spam_blocked: "Submission blocked. Please fill the form normally.",
     form_success: "Your message was sent successfully! We'll get back to you shortly.",
     form_error: "Message could not be sent. Please try again or contact us via WhatsApp.",
-    form_sending: "Sending..."
+    form_sending: "Sending...",
+    home_about_title: "Your trusted partner in reliable car rental",
+    home_about_p: "Since 2011, ABS Rent A Car has been your trusted rental partner in Alanya and the surrounding region, with a wide range of vehicles from economy to luxury.",
+    feat_booking_title: "Easy Booking Process",
+    feat_booking_desc: "Rent a car quickly in just a few steps via WhatsApp or our website.",
+    feat_locations_title: "Convenient Pick-Up & Return Points",
+    feat_locations_desc: "24/7 pick-up and return service in Alanya Center, Konakli, and both airports.",
+    badge_services: "Our Services",
+    services_title: "Explore our wide range of rental services",
+    svc1_title: "Car Rental With Driver",
+    svc1_desc: "A comfortable travel experience accompanied by our professional and experienced drivers.",
+    svc2_title: "Business Car Rental",
+    svc2_desc: "Long-term rental packages and corporate fleet solutions tailored for companies.",
+    svc3_title: "Airport Transfer",
+    svc3_desc: "Comfortable transfers from Gazipasa and Antalya airports with VIP Mercedes Vito.",
+    svc4_title: "Insurance Included",
+    svc4_desc: "All our vehicles include collision damage waiver, roadside assistance, and unlimited mileage.",
+    btn_all_services: "View All Services",
+    badge_fleet: "Our Fleet",
+    badge_how: "How It Works",
+    how_title: "Streamlined processes for a hassle-free experience",
+    how_p: "We keep our car rental process as simple and fast as possible.",
+    step1_title: "Browse & Select",
+    step1_desc: "Choose the car that suits your needs on our website. Compare all vehicles from economy to luxury on our fleet page.",
+    step2_title: "Book & Confirm",
+    step2_desc: "Confirm your reservation quickly via WhatsApp or our contact form. No prepayment required.",
+    step3_title: "Pick Up & Enjoy",
+    step3_desc: "Pick up your car at your chosen location and enjoy your holiday. 24/7 roadside assistance is always with you.",
+    video_title: "Discover the ease and comfort of renting a car with ABS Rent A Car",
+    badge_why: "Why Choose Us",
+    why_title: "Unmatched quality and service for your needs",
+    why1_title: "Extensive Fleet Options",
+    why1_desc: "From economy to luxury, sedan to SUV — more than 50 vehicles with solutions for everyone.",
+    why2_title: "Exceptional Customer Service",
+    why2_desc: "Our support team is available 24/7 via WhatsApp and phone.",
+    why3_title: "Convenient Locations",
+    why3_desc: "Pick-up and return points in Alanya Center, Konakli, and both airports.",
+    why4_title: "Reliability & Safety",
+    why4_desc: "All our vehicles are regularly maintained, insured, and prepared in line with hygiene standards.",
+    badge_testimonials: "Testimonials",
+    testimonials_title: "What our customers are saying about us",
+    cta_badge: "Ready to hit the road?",
+    cta_title: "Book your car today!",
+    cta_p: "Our friendly customer service team is here to help. Reach out to us anytime.",
+    badge_blog: "Latest Articles",
+    blog_title: "Stay informed and inspired for your next journey",
+    blog1_title: "5 Routes You Must Explore in Alanya",
+    blog1_desc: "We've compiled the 5 most beautiful holiday routes you can explore by car in and around Alanya.",
+    blog2_title: "What to Know When Renting a Car for the First Time",
+    blog2_desc: "Important tips and key points for those renting a car abroad or on holiday for the first time.",
+    blog3_title: "SUV or Sedan on Holiday? How to Choose",
+    blog3_desc: "Factors to consider when choosing the right car for your holiday, with pros and cons compared.",
+    btn_read_more: "Read More",
+    footer_legal: "Legal",
+    legal_terms: "Terms of Use",
+    legal_privacy: "Privacy Policy",
+    legal_disclaimer: "Legal Notice",
+    legal_kvkk: "KVKK Disclosure (GDPR)",
+    footer_quick: "Quick Links",
+    footer_newsletter: "Newsletter",
+    footer_contact: "Contact Info",
+    footer_about: "We provide uninterrupted 24/7 quality car rental and safe transfer services in Alanya, Konakli, and Gazipasa Airport regions.",
+    footer_newsletter_p: "Subscribe to our newsletter to stay informed about campaigns and special discounts.",
+    ph_email: "Your email address",
+    ph_fullname: "Enter your full name",
+    footer_rights: "&copy; 2026 ABS Rent A Car & Transfer. All rights reserved.",
+    newsletter_ok: "You have been subscribed to our newsletter, thank you!",
+    newsletter_err: "Subscription is currently unavailable. Please contact us via WhatsApp."
   }
 };
 
 let currentLang = localStorage.getItem('abs_lang') || 'tr';
+
+// Formspree endpoint for newsletter signups (set your form URL to activate)
+const NEWSLETTER_ENDPOINT = '';
+
+// Global toast (works on every page; reuses #spam-toast if present)
+function showGlobalToast(message, type) {
+  let toast = document.getElementById('spam-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'spam-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.className = `spam-toast toast-${type} toast-visible`;
+  setTimeout(() => toast.classList.remove('toast-visible'), 4500);
+}
 
 // Google Translate Integration Helper
 function injectGoogleTranslate() {
@@ -296,7 +446,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupDateValidation();
   setupLanguageSelector();
+  setupQuickBookingForm();
+  setupNewsletterForms();
+  setupWhatsAppFloat();
 });
+
+// Fixed WhatsApp contact button (all pages)
+function setupWhatsAppFloat() {
+  const btn = document.createElement('a');
+  btn.className = 'whatsapp-float';
+  btn.href = 'https://wa.me/905323318418';
+  btn.target = '_blank';
+  btn.rel = 'noopener';
+  btn.setAttribute('aria-label', 'WhatsApp ile bize yazın');
+  btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
+  document.body.appendChild(btn);
+}
+
+// Newsletter forms (footer, all pages)
+function setupNewsletterForms() {
+  document.querySelectorAll('.newsletter-form').forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+      const t = translations[localLang];
+      const emailInput = form.querySelector('input[type="email"]');
+      if (!emailInput || !emailInput.value) return;
+
+      if (!NEWSLETTER_ENDPOINT) {
+        showGlobalToast(t.newsletter_err, 'error');
+        return;
+      }
+
+      try {
+        const response = await fetch(NEWSLETTER_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: emailInput.value, form_type: 'newsletter' })
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        showGlobalToast(t.newsletter_ok, 'success');
+        form.reset();
+      } catch (err) {
+        console.error('[Newsletter] Error:', err);
+        showGlobalToast(t.newsletter_err, 'error');
+      }
+    });
+  });
+}
+
+// Homepage quick booking form -> WhatsApp reservation request
+function setupQuickBookingForm() {
+  const form = document.getElementById('quick-booking-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fullname = form.querySelector('[name="fullname"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    const pickupSelect = form.querySelector('[name="pickup"]');
+    const pickup = pickupSelect.options[pickupSelect.selectedIndex].text;
+    const pickupDate = form.querySelector('[name="pickup_date"]').value;
+
+    const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+    const message = localLang === 'tr'
+      ? `Merhaba, ABS Rent A Car. Web siteniz üzerinden araç kiralamak istiyorum:
+👤 Ad Soyad: ${fullname}
+📞 Telefon: ${phone}
+📍 Alış Yeri: ${pickup}
+📅 Alış Tarihi: ${pickupDate}
+
+Uygun araçlarınızı ve fiyat bilgisini paylaşabilir misiniz? Teşekkürler.`
+      : `Hello, ABS Rent A Car. I would like to rent a car via your website:
+👤 Name: ${fullname}
+📞 Phone: ${phone}
+📍 Pickup Location: ${pickup}
+📅 Pickup Date: ${pickupDate}
+
+Could you share your available cars and prices? Thank you.`;
+
+    window.open(`https://api.whatsapp.com/send?phone=905323318418&text=${encodeURIComponent(message)}`, '_blank');
+  });
+}
 
 // Async initializer: loads Google Sheets data then renders pages
 async function initDynamicData() {
@@ -322,6 +553,9 @@ async function initDynamicData() {
 // Setup Language
 function setupLanguage() {
   const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+
+  // Keep <html lang> in sync with the selected language
+  document.documentElement.lang = currentLang;
 
   document.querySelectorAll('[data-i18n]').forEach(elem => {
     const key = elem.getAttribute('data-i18n');
@@ -413,6 +647,11 @@ function setupMobileMenu() {
       navLinks.classList.toggle('open');
     });
 
+    // Close the menu after navigating (same-page anchors etc.)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
     // Close menu when switching back to desktop layout
     window.addEventListener('resize', () => {
       if (window.innerWidth > 992) {
@@ -464,7 +703,7 @@ function renderCars(cars, containerId) {
     card.innerHTML = `
       <div class="car-img-wrapper">
         <span class="car-tag">${category}</span>
-        <img class="car-card-img" src="${car.image}" alt="${car.name}">
+        <img class="car-card-img" src="${car.image}" alt="${car.name}" loading="lazy" decoding="async">
       </div>
       <div class="car-card-content">
         <h3>${car.name}</h3>
@@ -685,10 +924,10 @@ function renderCarDetails() {
             ${slidesHTML}
           </div>
           ${galleryImages.length > 1 ? `
-          <button class="gallery-arrow gallery-arrow-prev" id="gallery-prev">
+          <button class="gallery-arrow gallery-arrow-prev" id="gallery-prev" aria-label="Önceki fotoğraf">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           </button>
-          <button class="gallery-arrow gallery-arrow-next" id="gallery-next">
+          <button class="gallery-arrow gallery-arrow-next" id="gallery-next" aria-label="Sonraki fotoğraf">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
           <div class="gallery-dots">${dotsHTML}</div>

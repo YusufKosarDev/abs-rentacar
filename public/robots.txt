@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abs-rentacar.vercel.app/sitemap.xml
