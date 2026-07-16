@@ -696,7 +696,7 @@ function renderCarDetails() {
         </div>
         ${galleryImages.length > 1 ? `<div class="gallery-thumbs">${thumbsHTML}</div>` : ''}
         <div class="details-content">
-          <h1>${car.name} <span style="font-size: 1.2rem; font-weight: normal; color: var(--accent-gold);">(${category})</span></h1>
+          <h1>${car.name} <span style="font-size: 1.2rem; font-weight: normal; color: var(--accent);">(${category})</span></h1>
           <p style="font-size: 1.1rem; margin-bottom: 30px;">${description}</p>
           
           <div class="price-table">
@@ -762,7 +762,7 @@ function renderCarDetails() {
         <div class="booking-panel animate-fade-in-right">
           <div class="price-tag-large">
             <span class="amount">€${car.pricePerDay}</span>
-            <span class="price-unit">/ ${localLang === 'tr' ? 'günlükbaşlayan' : 'daily starting'}</span>
+            <span class="price-unit">/ ${localLang === 'tr' ? 'günlük başlayan' : 'daily starting'}</span>
           </div>
           
           <form id="details-booking-form">
