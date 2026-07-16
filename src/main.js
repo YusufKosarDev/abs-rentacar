@@ -15,6 +15,7 @@ const translations = {
     nav_transfer: "Transfer Hizmetleri",
     nav_about: "Hakkımızda",
     nav_contact: "İletişim",
+    nav_blog: "Blog",
     hero_tag: "ABS RENT A CAR & TRANSFER",
     hero_title: "Alanya'da Güvenli ve Konforlu Yolculuk",
     hero_subtitle: "Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde 7/24 kesintisiz hizmet, lüks ve ekonomik araç seçenekleri ve en uygun fiyat garantisiyle tatilinizin keyfini çıkarın.",
@@ -192,6 +193,7 @@ const translations = {
     nav_transfer: "Transfer Services",
     nav_about: "About Us",
     nav_contact: "Contact Us",
+    nav_blog: "Blog",
     hero_tag: "ABS RENT A CAR & TRANSFER",
     hero_title: "Safe and Comfortable Ride in Alanya",
     hero_subtitle: "Enjoy your holiday with 24/7 uninterrupted service, luxury and budget car options, and the best price guarantee in Alanya, Konakli, and Gazipasa Airport regions.",
@@ -450,7 +452,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNewsletterForms();
   setupWhatsAppFloat();
   setupConversionTracking();
+  setupNavActive();
 });
+
+// Highlight the nav item matching the current page (overrides hardcoded state)
+function setupNavActive() {
+  const items = document.querySelectorAll('.nav-links li');
+  if (!items.length) return;
+  const current = window.location.pathname.split('/').pop() || 'index.html';
+  items.forEach(li => {
+    const link = li.querySelector('a');
+    li.classList.toggle('active', !!link && link.getAttribute('href') === current);
+  });
+}
 
 // Vercel Web Analytics custom events for WhatsApp/phone conversions
 function trackEvent(name, data) {
@@ -936,13 +950,25 @@ function renderCarDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const carId = urlParams.get('id') || carsData[0].id;
   const car = carsData.find(c => c.id === carId);
-  
-  if (!car) return;
-  
+
   const detailsContainer = document.getElementById('car-details-container');
   if (!detailsContainer) return;
 
   const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+
+  // Unknown car id -> friendly not-found message instead of a blank page
+  if (!car) {
+    detailsContainer.innerHTML = `
+      <div class="animate-fade-in" style="text-align: center; padding: 80px 0;">
+        <h2 style="margin-bottom: 15px;">${localLang === 'tr' ? 'Araç bulunamadı' : 'Car not found'}</h2>
+        <p style="margin-bottom: 30px;">${localLang === 'tr'
+          ? 'Aradığınız araç filomuzdan kaldırılmış veya bağlantı hatalı olabilir.'
+          : 'The car you are looking for may have been removed from our fleet, or the link may be incorrect.'}</p>
+        <a href="cars.html" class="btn btn-primary">${localLang === 'tr' ? 'Tüm Araçları Gör' : 'View All Cars'}</a>
+      </div>
+    `;
+    return;
+  }
   
   const category = localLang === 'tr' ? car.category : car.categoryEng;
   const transmission = localLang === 'tr' ? car.transmission : car.transmissionEng;
