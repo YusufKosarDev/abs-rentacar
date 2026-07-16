@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Havalimanı Transfer Hizmetleri | ABS Rent A Car</title>
+  <meta name="description" content="Antalya Havalimanı (AYT) ve Gazipaşa Havalimanı (GZP) Alanya Konaklı transfer fiyatları ve VIP Mercedes Vito araç kiralama.">
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="/src/css/animations.css">
+  <style>
+    .transfer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .transfer-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 35px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+    .transfer-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(243, 177, 26, 0.3);
+      box-shadow: var(--shadow-premium);
+    }
+    .transfer-route {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+    .transfer-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      font-family: var(--font-heading);
+      margin-bottom: 20px;
+    }
+    .transfer-details-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-accent">ABS</span> RENT
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
+        <li><a href="cars.html" data-i18n="nav_cars">Kiralık Araçlar</a></li>
+        <li class="active"><a href="transfer.html" data-i18n="nav_transfer">Transfer Hizmetleri</a></li>
+        <li><a href="about.html" data-i18n="nav_about">Hakkımızda</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <select class="lang-selector" id="lang-select">
+          <option value="tr">TR</option>
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="ru">RU</option>
+          <option value="fr">FR</option>
+          <option value="es">ES</option>
+          <option value="it">IT</option>
+          <option value="pt">PT</option>
+          <option value="nl">NL</option>
+          <option value="ar">AR</option>
+          <option value="zh-CN">ZH</option>
+        </select>
+        <a href="cars.html" class="btn btn-primary btn-book-header" data-i18n="btn_book">Rezervasyon Yap</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="section-padding" style="background: linear-gradient(to bottom, rgba(18, 18, 18, 0.9) 0%, rgba(18,18,18,0.7) 100%), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover; padding-top: 160px; padding-bottom: 80px; border-bottom: 1px solid var(--border-glass);">
+    <div class="container animate-fade-in-left">
+      <h2 style="font-size: 3rem;" data-i18n="nav_transfer">Transfer Hizmetleri</h2>
+      <p style="margin-top: 10px; color: var(--accent-gold); letter-spacing: 1px;">Güvenli, Konforlu ve VIP Havalimanı Transferleri</p>
+    </div>
+  </section>
+
+  <!-- Transfer Pricing & Routes -->
+  <section class="section-padding" style="background: transparent;">
+    <div class="container">
+      <div class="section-header">
+        <p data-i18n="vip_rates_tag">VIP HİZMET TARİFELERİ</p>
+        <h2 data-i18n="transfer_rates_title">Havalimanı Transfer Ücretlerimiz</h2>
+      </div>
+
+      <div class="transfer-grid">
+        <!-- Route 1 -->
+        <div class="transfer-card animate-fade-in-up">
+          <div class="transfer-route" data-i18n="transfer_route_1_title">Gazipaşa Havalimanı (GZP) ↔ Alanya / Konaklı</div>
+          <div class="transfer-price">€40 <span style="font-size: 1rem; color: var(--text-muted); font-weight: normal;" data-i18n="label_one_way_starting">/ tek yön başlayan</span></div>
+          <ul class="transfer-details-list" data-i18n="transfer_route_1_desc_list">
+            <li>✔ VIP Mercedes Vito (1-7 Kişi)</li>
+            <li>✔ Şoförlü Özel Hizmet</li>
+            <li>✔ Ücretsiz Bagaj Hizmeti</li>
+            <li>✔ Uçuş Takibi (Bekleme Ücretsiz)</li>
+          </ul>
+          <button class="btn btn-primary pulse-button book-transfer" data-route="Gazipasa - Alanya" data-price="40" data-i18n="whatsapp_book_transfer" style="width: 100%;">WhatsApp ile Rezervasyon Yap</button>
+        </div>
+
+        <!-- Route 2 -->
+        <div class="transfer-card animate-fade-in-up delay-1">
+          <div class="transfer-route" data-i18n="transfer_route_2_title">Antalya Havalimanı (AYT) ↔ Alanya / Konaklı</div>
+          <div class="transfer-price">€70 <span style="font-size: 1rem; color: var(--text-muted); font-weight: normal;" data-i18n="label_one_way_starting">/ tek yön başlayan</span></div>
+          <ul class="transfer-details-list" data-i18n="transfer_route_2_desc_list">
+            <li>✔ VIP Mercedes Vito (1-7 Kişi)</li>
+            <li>✔ Şoförlü Özel Hizmet</li>
+            <li>✔ Ücretsiz Bagaj Hizmeti</li>
+            <li>✔ Otoban ve Geçiş Ücretleri Dahil</li>
+          </ul>
+          <button class="btn btn-primary pulse-button book-transfer" data-route="Antalya - Alanya" data-price="70" data-i18n="whatsapp_book_transfer" style="width: 100%;">WhatsApp ile Rezervasyon Yap</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Vehicles -->
+  <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass);">
+    <div class="container">
+      <div class="section-header">
+        <p data-i18n="vip_fleet_tag">VIP FİLOMUZ</p>
+        <h2 data-i18n="transfer_fleet_title">Transfer Araçlarımız</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px;">
+        <!-- Vehicle Card -->
+        <div class="car-card">
+          <div class="car-img-wrapper">
+            <span class="car-tag">VIP Vito</span>
+            <img class="car-card-img" src="https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png" alt="Mercedes Vito VIP">
+          </div>
+          <div class="car-card-content">
+            <h3 data-i18n="vito_vip_title">Mercedes-Benz Vito VIP</h3>
+            <p style="margin-bottom: 20px;" data-i18n="vito_vip_desc">Deri koltukları, klima, buzdolabı ve Wi-Fi desteğiyle ultra konforlu VIP seyahat sunar.</p>
+            <div class="spec-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span data-i18n="capacity_7">7 Yolcu Kapasitesi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicle Card 2 -->
+        <div class="car-card">
+          <div class="car-img-wrapper">
+            <span class="car-tag">VIP Caravelle</span>
+            <img class="car-card-img" src="https://www.carrentturkey.com/wp-content/uploads/2025/05/carabs-e1747476219603.png" alt="VW Caravelle VIP">
+          </div>
+          <div class="car-card-content">
+            <h3 data-i18n="caravelle_vip_title">Volkswagen Caravelle VIP</h3>
+            <p style="margin-bottom: 20px;" data-i18n="caravelle_vip_desc">Geniş bagaj hacmi ve konforlu koltuk düzeniyle kalabalık gruplar için en ideal seçim.</p>
+            <div class="spec-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span data-i18n="capacity_8">8 Yolcu Kapasitesi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="margin-bottom: 20px;">
+          <span class="logo-accent">ABS</span> RENT
+        </a>
+        <p>Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde kesintisiz 7/24 kaliteli kiralama ve güvenli transfer hizmetleri sunmaktayız.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Hızlı Menü</h3>
+        <ul class="footer-links">
+          <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
+          <li><a href="cars.html" data-i18n="nav_cars">Kiralık Araçlar</a></li>
+          <li><a href="transfer.html" data-i18n="nav_transfer">Transfer Hizmetleri</a></li>
+          <li><a href="about.html" data-i18n="nav_about">Hakkımızda</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">İletişim</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>İletişim Bilgileri</h3>
+        <ul class="footer-links" style="gap: 12px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start; color: var(--text-secondary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" style="flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Konaklı Mahallesi, Alanya, Türkiye</span>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: flex-start; color: var(--text-secondary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <a href="tel:+905323318418" style="color: var(--text-secondary); text-decoration: none;">+90 532 331 84 18</a>
+              <a href="tel:+905352744405" style="color: var(--text-secondary); text-decoration: none;">+90 535 274 44 05</a>
+            </div>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: flex-start; color: var(--text-secondary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <a href="mailto:absrentacar@hotmail.com" style="color: var(--text-secondary); text-decoration: none;">absrentacar@hotmail.com</a>
+              <a href="mailto:cagriozkann@gmail.com" style="color: var(--text-secondary); text-decoration: none;">cagriozkann@gmail.com</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>E-Bülten</h3>
+        <p>Kampanyalardan ve özel indirimlerden haberdar olmak için e-bültenimize kaydolun.</p>
+        <form style="display: flex; gap: 10px; margin-top: 15px;">
+          <input type="email" placeholder="E-posta adresiniz" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: var(--radius-md); color: white; width: 100%; outline: none;" required>
+          <button type="submit" class="btn btn-primary" style="padding: 12px 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2026 ABS Rent A Car & Transfer. Tüm hakları saklıdır.</span>
+      <span>Tasarım: NovaRide Style</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+  <script>
+    // Handle transfer request submission to WhatsApp
+    document.querySelectorAll('.book-transfer').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const route = btn.getAttribute('data-route');
+        const price = btn.getAttribute('data-price');
+        
+        const message = `Merhaba, ABS Rent A Car & Transfer. VIP Havalimanı Transfer hizmetiniz için bilgi almak/rezervasyon yapmak istiyorum:
+📌 Güzergah: ${route}
+💶 Başlangıç Fiyatı: €${price}
+
+Müsaitlik ve detaylar için geri dönüş yapabilir misiniz? Teşekkürler.`;
+        
+        window.open(`https://api.whatsapp.com/send?phone=905323318418&text=${encodeURIComponent(message)}`, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>

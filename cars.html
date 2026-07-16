@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiralık Araçlar Filomuz | ABS Rent A Car</title>
+  <meta name="description" content="ABS Rent A Car geniş araç filosu. Ekonomik, SUV, lüks ve konforlu kiralık araba listesi ve fiyatları.">
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="/src/css/animations.css">
+  <style>
+    .cars-page-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      margin-top: 50px;
+    }
+    .filter-sidebar {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      height: fit-content;
+      position: sticky;
+      top: 110px;
+    }
+    .filter-group {
+      margin-bottom: 25px;
+    }
+    .filter-group:last-child {
+      margin-bottom: 0;
+    }
+    .filter-group label {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      display: block;
+      color: var(--accent-gold);
+    }
+    @media (max-width: 992px) {
+      .cars-page-layout {
+        grid-template-columns: 1fr;
+      }
+      .filter-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-accent">ABS</span> RENT
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
+        <li class="active"><a href="cars.html" data-i18n="nav_cars">Kiralık Araçlar</a></li>
+        <li><a href="transfer.html" data-i18n="nav_transfer">Transfer Hizmetleri</a></li>
+        <li><a href="about.html" data-i18n="nav_about">Hakkımızda</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <select class="lang-selector" id="lang-select">
+          <option value="tr">TR</option>
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="ru">RU</option>
+          <option value="fr">FR</option>
+          <option value="es">ES</option>
+          <option value="it">IT</option>
+          <option value="pt">PT</option>
+          <option value="nl">NL</option>
+          <option value="ar">AR</option>
+          <option value="zh-CN">ZH</option>
+        </select>
+        <a href="cars.html" class="btn btn-primary btn-book-header" data-i18n="btn_book">Rezervasyon Yap</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <section class="section-padding" style="background: linear-gradient(to bottom, rgba(18, 18, 18, 0.9) 0%, rgba(18,18,18,0.7) 100%), url('https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1920&q=80') center/cover; padding-top: 160px; padding-bottom: 80px; border-bottom: 1px solid var(--border-glass);">
+    <div class="container animate-fade-in-left">
+      <h2 style="font-size: 3rem;" data-i18n="nav_cars">Kiralık Araçlar</h2>
+      <p style="margin-top: 10px; color: var(--accent-gold); letter-spacing: 1px;" data-i18n="section_fleet_tag">GENİŞ ARAÇ FİLOMUZ</p>
+    </div>
+  </section>
+
+  <!-- Cars Grid & Filters Section -->
+  <section class="section-padding" style="background: transparent;">
+    <div class="container">
+      <div class="cars-page-layout">
+        
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar animate-fade-in-left">
+          <div class="filter-group">
+            <label for="search-car-name" data-i18n="btn_find_car">Araç Bul</label>
+            <input type="text" id="search-car-name" data-i18n="search_placeholder" placeholder="Araç adı girin...">
+          </div>
+          
+          <div class="filter-group">
+            <label for="filter-type" data-i18n="label_luggage">Araç Segmenti</label>
+            <select id="filter-type">
+              <option value="all" data-i18n="tab_all">Tümü</option>
+              <option value="sedan" data-i18n="tab_sedan">Sedan</option>
+              <option value="suv" data-i18n="tab_suv">SUV</option>
+              <option value="crossover" data-i18n="tab_crossover">Crossover</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label for="filter-transmission" data-i18n="label_transmission">Şanzıman</label>
+            <select id="filter-transmission">
+              <option value="all" data-i18n="tab_all">Tümü</option>
+              <option value="Manuel">Manuel</option>
+              <option value="Otomatik">Otomatik</option>
+            </select>
+          </div>
+        </aside>
+
+        <!-- Cars Grid Content -->
+        <main class="cars-grid" id="all-cars-grid">
+          <!-- Rendered by JS -->
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="margin-bottom: 20px;">
+          <span class="logo-accent">ABS</span> RENT
+        </a>
+        <p>Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde kesintisiz 7/24 kaliteli kiralama ve güvenli transfer hizmetleri sunmaktayız.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Hızlı Menü</h3>
+        <ul class="footer-links">
+          <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
+          <li><a href="cars.html" data-i18n="nav_cars">Kiralık Araçlar</a></li>
+          <li><a href="transfer.html" data-i18n="nav_transfer">Transfer Hizmetleri</a></li>
+          <li><a href="about.html" data-i18n="nav_about">Hakkımızda</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">İletişim</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>İletişim Bilgileri</h3>
+        <ul class="footer-links" style="gap: 12px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start; color: var(--text-secondary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" style="flex-shrink:0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Konaklı Mahallesi, Alanya, Türkiye</span>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: flex-start; color: var(--text-secondary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <a href="tel:+905323318418" style="color: var(--text-secondary); text-decoration: none;">+90 532 331 84 18</a>
+              <a href="tel:+905352744405" style="color: var(--text-secondary); text-decoration: none;">+90 535 274 44 05</a>
+            </div>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: flex-start; color: var(--text-secondary);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gold" style="flex-shrink:0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <a href="mailto:absrentacar@hotmail.com" style="color: var(--text-secondary); text-decoration: none;">absrentacar@hotmail.com</a>
+              <a href="mailto:cagriozkann@gmail.com" style="color: var(--text-secondary); text-decoration: none;">cagriozkann@gmail.com</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>E-Bülten</h3>
+        <p>Kampanyalardan ve özel indirimlerden haberdar olmak için e-bültenimize kaydolun.</p>
+        <form style="display: flex; gap: 10px; margin-top: 15px;">
+          <input type="email" placeholder="E-posta adresiniz" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: var(--radius-md); color: white; width: 100%; outline: none;" required>
+          <button type="submit" class="btn btn-primary" style="padding: 12px 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2026 ABS Rent A Car & Transfer. Tüm hakları saklıdır.</span>
+      <span>Tasarım: NovaRide Style</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

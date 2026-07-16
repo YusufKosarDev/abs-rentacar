@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABS Rent A Car & Transfer | Alanya Araç Kiralama</title>
+  <meta name="description" content="Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde en ucuz fiyatlarla 7/24 kesintisiz araç kiralama ve havaalanı transfer hizmeti.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="stylesheet" href="/src/css/animations.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-accent">ABS</span> RENT
+      </a>
+      
+      <button class="menu-toggle" id="menu-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li class="active"><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
+        <li><a href="cars.html" data-i18n="nav_cars">Kiralık Araçlar</a></li>
+        <li><a href="transfer.html" data-i18n="nav_transfer">Transfer Hizmetleri</a></li>
+        <li><a href="about.html" data-i18n="nav_about">Hakkımızda</a></li>
+        <li><a href="contact.html" data-i18n="nav_contact">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <select class="lang-selector" id="lang-select">
+          <option value="tr">TR</option>
+          <option value="en">EN</option>
+          <option value="de">DE</option>
+          <option value="ru">RU</option>
+          <option value="fr">FR</option>
+          <option value="es">ES</option>
+          <option value="it">IT</option>
+          <option value="pt">PT</option>
+          <option value="nl">NL</option>
+          <option value="ar">AR</option>
+          <option value="zh-CN">ZH</option>
+        </select>
+        <a href="cars.html" class="btn btn-primary btn-book-header" data-i18n="btn_book">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+          Rezervasyon Yap
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1920&q=80" alt="Lüks Kiralık Araç Alanya" class="hero-img">
+    <div class="container hero-content animate-fade-in-left">
+      <span class="hero-tag" data-i18n="hero_tag">ABS RENT A CAR & TRANSFER</span>
+      <h1 data-i18n="hero_title">Alanya'da Güvenli ve Konforlu Yolculuk</h1>
+      <p data-i18n="hero_subtitle">Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde 7/24 kesintisiz hizmet, lüks ve ekonomik araç seçenekleri ve en uygun fiyat garantisiyle tatilinizin keyfini çıkarın.</p>
+      <div class="hero-buttons">
+        <a href="cars.html" class="btn btn-primary glow-effect" data-i18n="btn_book">Rezervasyon Yap</a>
+        <a href="about.html" class="btn btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+          <span data-i18n="btn_learn">Daha Fazla Bilgi</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Booking Widget (Overlapping) -->
+    <div class="container booking-widget-container">
+      <div class="booking-widget">
+        <h3 data-i18n="search_title">Hızlı Araç Sorgulama</h3>
+        <form class="booking-form" action="cars.html" method="GET">
+          <div class="form-group">
+            <label data-i18n="label_fullname">Adınız Soyadınız</label>
+            <input type="text" name="fullname" placeholder="Ad Soyad girin" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_phone">Telefon</label>
+            <input type="tel" name="phone" placeholder="+90 5XX XXX XX XX" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_pickup_loc">Alış Lokasyonu</label>
+            <select name="pickup" required>
+              <option value="" disabled selected data-i18n="opt_select_loc">Lokasyon Seçin</option>
+              <option value="Alanya" data-i18n="opt_alanya">Alanya Merkez</option>
+              <option value="Konakli" data-i18n="opt_konakli">Konaklı Otelleri</option>
+              <option value="Gazipasa" data-i18n="opt_gazipasa">Gazipaşa Havalimanı (GZP)</option>
+              <option value="Antalya" data-i18n="opt_antalya">Antalya Havalimanı (AYT)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="label_pickup_date">Alış Tarihi</label>
+            <input type="date" name="pickup_date" required>
+          </div>
+          <button type="submit" class="btn btn-primary pulse-button" data-i18n="btn_find_car">Araç Bul</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="section-padding section-light" id="about-section">
+    <div class="container about-grid">
+      <div class="about-image animate-fade-in-left">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0b9c?auto=format&fit=crop&w=800&q=80" alt="ABS Rent A Car Alanya">
+      </div>
+      <div class="about-content animate-fade-in-right">
+        <div class="section-badge">Hakkımızda</div>
+        <h2>Güvenilir araç kiralama partneriniz</h2>
+        <p>ABS Rent A Car, 2011'den bu yana Alanya ve çevre bölgelerde ekonomikten lükse geniş bir araç yelpazesiyle hizmet veren güvenilir kiralama partnerinizdir.</p>
+        <div class="about-features">
+          <div class="about-feature-item">
+            <div class="about-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <h4>Kolay Rezervasyon Süreci</h4>
+              <p>WhatsApp veya web sitemiz üzerinden birkaç adımda hızlıca araç kiralayabilirsiniz.</p>
+            </div>
+          </div>
+          <div class="about-feature-item">
+            <div class="about-feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Uygun Teslim & Alış Noktaları</h4>
+              <p>Alanya Merkez, Konaklı ve her iki havalimanında 7/24 teslim ve alış hizmeti.</p>
+            </div>
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary" data-i18n="nav_contact">İletişim</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section-padding" id="services-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Hizmetlerimiz</div>
+        <h2>Geniş yelpazede kiralama hizmetlerimizi keşfedin</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Şoförlü Araç Kiralama</h3>
+          <p>Profesyonel ve deneyimli şoförlerimiz eşliğinde konforlu seyahat deneyimi.</p>
+          <a href="transfer.html" class="service-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6"/><path d="M23 11h-6"/></svg>
+          </div>
+          <h3>Kurumsal Kiralama</h3>
+          <p>Şirketlere özel uzun dönem kiralama paketleri ve kurumsal filo çözümleri.</p>
+          <a href="contact.html" class="service-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="M15 5l4 4"/></svg>
+          </div>
+          <h3>Havalimanı Transfer</h3>
+          <p>Gazipaşa ve Antalya havalimanlarından VIP Mercedes Vito ile konforlu transfer.</p>
+          <a href="transfer.html" class="service-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+          </a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Kasko & Sigorta Dahil</h3>
+          <p>Tüm araçlarımız muafiyetli kasko, yol yardımı ve sınırsız kilometre dahildir.</p>
+          <a href="about.html" class="service-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="transfer.html" class="btn btn-secondary">Tüm Hizmetleri Gör</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fleet Showcase Section -->
+  <section class="section-padding section-light" id="fleet-section">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <div class="section-badge">Araç Filomuz</div>
+          <h2 data-i18n="section_fleet_title">Sizin İçin En Uygun Aracı Seçin</h2>
+        </div>
+        <div class="fleet-nav-arrows">
+          <button class="swiper-nav-btn" id="fleet-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="swiper-nav-btn" id="fleet-next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="fleet-tabs">
+        <button class="tab-btn active" data-tab="all" data-i18n="tab_all">Tümü</button>
+        <button class="tab-btn" data-tab="sedan" data-i18n="tab_sedan">Sedan</button>
+        <button class="tab-btn" data-tab="suv" data-i18n="tab_suv">SUV</button>
+        <button class="tab-btn" data-tab="crossover" data-i18n="tab_crossover">Crossover</button>
+      </div>
+
+      <!-- Dynamic Fleet Swiper -->
+      <div class="swiper fleet-swiper">
+        <div class="swiper-wrapper" id="home-fleet-grid">
+          <!-- Rendered by JS as swiper-slides -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section-padding" id="how-it-works">
+    <div class="container how-works-grid">
+      <div class="how-works-content animate-fade-in-left">
+        <div class="section-badge">Nasıl Çalışır</div>
+        <h2>Zahmetsiz deneyim için basitleştirilmiş süreçler</h2>
+        <p>Araç kiralama sürecimizi olabildiğince basit ve hızlı tuttuk.</p>
+        
+        <div class="process-accordion">
+          <div class="process-item active">
+            <div class="process-header">
+              <span class="process-number">01</span>
+              <h4>Göz Atın & Seçin</h4>
+              <svg class="process-toggle" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="process-body">
+              <p>Web sitemiz üzerinden ihtiyacınıza uygun aracı seçin. Filo sayfamızda ekonomikten lükse tüm araçları karşılaştırabilirsiniz.</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <div class="process-header">
+              <span class="process-number">02</span>
+              <h4>Rezervasyon Yapın</h4>
+              <svg class="process-toggle" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="process-body">
+              <p>WhatsApp üzerinden veya iletişim formumuz ile hızlıca rezervasyonunuzu onaylayın. Ön ödeme gerekmez.</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <div class="process-header">
+              <span class="process-number">03</span>
+              <h4>Teslim Alın & Keyfini Çıkarın</h4>
+              <svg class="process-toggle" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="process-body">
+              <p>Seçtiğiniz lokasyonda aracınızı teslim alın ve tatilinizin keyfini çıkarın. 7/24 yol yardımı her zaman yanınızda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="how-works-stats animate-fade-in-right">
+        <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="Araç Kiralama Süreci" class="how-works-img">
+        <div class="stats-badge">
+          <span class="stats-number">5000+</span>
+          <span class="stats-label">Mutlu Müşteri</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Showcase Section -->
+  <section class="video-showcase-section">
+    <div class="video-bg" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="container video-content">
+      <h2>ABS Rent A Car ile araç kiralamanın kolaylığını ve konforunu keşfedin</h2>
+      <button class="video-play-btn" id="video-play-btn" data-video="https://www.youtube.com/embed/Y-x0efG1seA">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span class="pulse-ring"></span>
+        <span class="pulse-ring delay-1"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Video Modal -->
+  <div class="video-modal" id="video-modal">
+    <div class="video-modal-overlay"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" id="video-modal-close">&times;</button>
+      <iframe id="video-iframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Why Choose Us Section -->
+  <section class="section-padding section-light" id="why-choose-us">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Neden Bizi Seçmelisiniz</div>
+        <h2>İhtiyaçlarınız için eşsiz kalite ve hizmet</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Geniş Filo Seçenekleri</h3>
+          <p>Ekonomikten lükse, sedan'dan SUV'a 50'den fazla araç seçeneği ile herkese uygun çözümler sunuyoruz.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Üstün Müşteri Hizmeti</h3>
+          <p>7/24 ulaşılabilir destek ekibimiz, WhatsApp ve telefon ile her an yanınızda.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Uygun Lokasyonlar</h3>
+          <p>Alanya Merkez, Konaklı ve her iki havalimanında teslim-alış noktalarımız mevcuttur.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Güvenilirlik & Güvenlik</h3>
+          <p>Tüm araçlarımız düzenli bakımlı, kaskolu ve hijyen kurallarına uygun olarak hazırlanmaktadır.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section-padding" id="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Müşteri Yorumları</div>
+        <h2>Müşterilerimiz bizim hakkımızda ne diyor</h2>
+      </div>
+      <div class="swiper testimonials-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p>"Alanya tatilimiz boyunca ABS Rent A Car'dan araç kiraladık. Araç tertemizdi, teslim süreci çok hızlıydı. Kesinlikle tavsiye ederim!"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">AK</div>
+                <div>
+                  <h4>Ahmet Korkmaz</h4>
+                  <span>İstanbul</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p>"Gazipaşa Havalimanı'nda bizi aracımızla karşıladılar. Fiyatlar çok uygun, gizli ücret yok. Bir sonraki tatilimizde de tercih edeceğiz."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">SM</div>
+                <div>
+                  <h4>Stefan Müller</h4>
+                  <span>Berlin, Almanya</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p>"We rented a Dacia Duster for a week. Great car, excellent service, and very affordable prices. The WhatsApp communication was super easy!"</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">JB</div>
+                <div>
+                  <h4>James Brown</h4>
+                  <span>London, UK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-padding section-light" id="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Sıkça Sorulan Sorular</div>
+        <h2 data-i18n="faq_subtitle">Hizmetlerimiz hakkında bilmeniz gereken her şey</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            <span data-i18n="q1">Araç kiralamak için yaş sınırı nedir?</span>
+            <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer">
+            <p data-i18n="a1">Ekonomik sınıf araçlar için en az 21 yaş ve 2 yıllık geçerli ehliyet, lüks grup araçlar için en az 25 yaş ve 5 yıllık ehliyet gerekmektedir.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span data-i18n="q2">Fiyatlarınıza kasko dahil midir?</span>
+            <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer">
+            <p data-i18n="a2">Evet, tüm araç kiralama fiyatlarımıza muafiyetli kasko, 24 saat yol yardımı ve sınırsız kilometre dahildir.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span data-i18n="q3">Havalimanı teslimatı yapıyor musunuz?</span>
+            <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer">
+            <p data-i18n="a3">Evet, Gazipaşa Havalimanı (GZP) ve Antalya Havalimanı (AYT) için 7/24 araç teslimatı ve teslim alımı yapıyoruz.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span data-i18n="q4">Ödemeyi nasıl yapabilirim?</span>
+            <svg class="faq-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer">
+            <p data-i18n="a4">Ödemeyi aracı teslim alırken nakit (TL, Euro, Dolar) veya kredi kartı ile yapabilirsiniz. Ön ödeme talep edilmemektedir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container cta-content">
+      <div class="section-badge">Yola çıkmaya hazır mısınız?</div>
+      <h2>Aracınızı bugün rezerve edin!</h2>
+      <p>Dost canlısı müşteri hizmetleri ekibimiz size yardımcı olmak için burada. İstediğiniz zaman bize ulaşın.</p>
+      <a href="contact.html" class="btn btn-primary" data-i18n="nav_contact">İletişim</a>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="section-padding section-light" id="blog-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Son Makaleler</div>
+        <h2>Bir sonraki yolculuğunuz için bilgilenin ve ilham alın</h2>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="https://images.unsplash.com/photo-1449965408869-ebd13bc0c322?auto=format&fit=crop&w=600&q=80" alt="Alanya Tatil Rotaları">
+            <span class="blog-date">15 Temmuz 2026</span>
+          </div>
+          <div class="blog-body">
+            <h3>Alanya'da Keşfedilmesi Gereken 5 Rota</h3>
+            <p>Alanya ve çevresinde araçla keşfedebileceğiniz en güzel 5 tatil rotasını sizler için derledik.</p>
+            <a href="#" class="blog-link">Devamını Oku
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80" alt="Araç Kiralama İpuçları">
+            <span class="blog-date">10 Temmuz 2026</span>
+          </div>
+          <div class="blog-body">
+            <h3>İlk Kez Araç Kiralarken Bilmeniz Gerekenler</h3>
+            <p>Yurt dışında veya tatilde ilk kez araç kiralayacaklar için önemli ipuçları ve dikkat edilmesi gereken noktalar.</p>
+            <a href="#" class="blog-link">Devamını Oku
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" alt="SUV vs Sedan Karşılaştırma">
+            <span class="blog-date">5 Temmuz 2026</span>
+          </div>
+          <div class="blog-body">
+            <h3>Tatilde SUV mu Sedan mı? Hangisini Seçmeli</h3>
+            <p>Tatilinize uygun aracı seçerken göz önünde bulundurmanız gereken faktörler ve avantaj-dezavantaj karşılaştırması.</p>
+            <a href="#" class="blog-link">Devamını Oku
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11.6654 3.97592L1.64141 13.9999L-0.00537109 12.3531L10.0174 2.32914H1.18372V-0.00012207H13.9946V12.8108H11.6654V3.97592Z" fill="currentColor"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="margin-bottom: 20px;">
+          <span class="logo-accent">ABS</span> RENT
+        </a>
+        <p>Alanya, Konaklı ve Gazipaşa Havalimanı bölgelerinde kesintisiz 7/24 kaliteli kiralama ve güvenli transfer hizmetleri sunmaktayız.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Yasal</h3>
+        <ul class="footer-links">
+          <li><a href="#">Kullanım Şartları</a></li>
+          <li><a href="#">Gizlilik Politikası</a></li>
+          <li><a href="#">Yasal Uyarı</a></li>
+          <li><a href="#">KVKK Aydınlatma Metni</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Hızlı Menü</h3>
+        <ul class="footer-links">
+          <li><a href="index.html" data-i18n="nav_home">Ana Sayfa</a></li>
+          <li><a href="cars.html" data-i18n="nav_cars">Kiralık Araçlar</a></li>
+          <li><a href="transfer.html" data-i18n="nav_transfer">Transfer Hizmetleri</a></li>
+          <li><a href="about.html" data-i18n="nav_about">Hakkımızda</a></li>
+          <li><a href="contact.html" data-i18n="nav_contact">İletişim</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>E-Bülten</h3>
+        <p>Kampanyalardan ve özel indirimlerden haberdar olmak için e-bültenimize kaydolun.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="E-posta adresiniz" required>
+          <button type="submit" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&copy; 2026 ABS Rent A Car & Transfer. Tüm hakları saklıdır.</span>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+        <a href="#" class="social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.58 12 19.58 12 19.58s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.45z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
