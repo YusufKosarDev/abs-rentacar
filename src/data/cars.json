@@ -218,5 +218,401 @@
       "24/7 Roadside Assistance",
       "Lane Keeping Assist"
     ]
+  },
+  {
+    "id": "suzuki-samurai",
+    "name": "Suzuki Samurai Jeep",
+    "category": "Ekonomik",
+    "categoryEng": "Economy",
+    "type": "SUV",
+    "typeEng": "SUV",
+    "transmission": "Manuel",
+    "transmissionEng": "Manual",
+    "fuel": "Benzin",
+    "fuelEng": "Gasoline",
+    "doors": 2,
+    "passengers": 4,
+    "luggage": "1 Küçük",
+    "luggageEng": "1 Small",
+    "ac": false,
+    "pricePerDay": 43,
+    "prices": {
+      "1_3": 47,
+      "4_7": 45,
+      "8_14": 43,
+      "15_21": 41,
+      "22_29": 39,
+      "30_plus": 37
+    },
+    "description": "Açılır tentesiyle Alanya güneşinin tadını çıkaracağınız eğlenceli klasik jeep. Sahil turları ve kısa keşif gezileri için filomuzun en ekonomik seçeneği.",
+    "descriptionEng": "A fun classic jeep with a folding soft top to enjoy the Alanya sun. The most budget-friendly option in our fleet for coastal tours and short trips.",
+    "image": "/images/cars/suzuki-samurai.jpg",
+    "images": [
+      "/images/cars/suzuki-samurai.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "fiat-doblo",
+    "name": "Fiat Doblo",
+    "category": "Ticari",
+    "categoryEng": "Commercial",
+    "type": "Ticari",
+    "typeEng": "Commercial",
+    "transmission": "Manuel",
+    "transmissionEng": "Manual",
+    "fuel": "Dizel",
+    "fuelEng": "Diesel",
+    "doors": 5,
+    "passengers": 5,
+    "luggage": "4 Büyük",
+    "luggageEng": "4 Large",
+    "ac": true,
+    "pricePerDay": 47,
+    "prices": {
+      "1_3": 52,
+      "4_7": 49,
+      "8_14": 47,
+      "15_21": 45,
+      "22_29": 42,
+      "30_plus": 40
+    },
+    "description": "Geniş iç hacmi ve sürgülü kapılarıyla kalabalık aileler ve bol bagajlı yolculuklar için ideal, yakıt cimrisi dizel aile aracı.",
+    "descriptionEng": "A fuel-efficient diesel family van with a spacious interior and sliding doors, ideal for large families and luggage-heavy trips.",
+    "image": "/images/cars/fiat-doblo.jpg",
+    "images": [
+      "/images/cars/fiat-doblo.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "fiat-fiorino",
+    "name": "Fiat Fiorino",
+    "category": "Ticari",
+    "categoryEng": "Commercial",
+    "type": "Ticari",
+    "typeEng": "Commercial",
+    "transmission": "Manuel",
+    "transmissionEng": "Manual",
+    "fuel": "Dizel",
+    "fuelEng": "Diesel",
+    "doors": 4,
+    "passengers": 5,
+    "luggage": "3 Büyük",
+    "luggageEng": "3 Large",
+    "ac": true,
+    "pricePerDay": 47,
+    "prices": {
+      "1_3": 52,
+      "4_7": 49,
+      "8_14": 47,
+      "15_21": 45,
+      "22_29": 42,
+      "30_plus": 40
+    },
+    "description": "Kompakt dış boyutlarına rağmen şaşırtıcı iç genişliğe sahip, şehir içinde çevik ve ekonomik çok amaçlı araç.",
+    "descriptionEng": "A versatile vehicle that is agile and economical in the city, with surprising interior space despite its compact size.",
+    "image": "/images/cars/fiat-fiorino.jpg",
+    "images": [
+      "/images/cars/fiat-fiorino.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "hyundai-i20",
+    "name": "Hyundai i20",
+    "category": "Ekonomik",
+    "categoryEng": "Economy",
+    "type": "Hatchback",
+    "typeEng": "Hatchback",
+    "transmission": "Otomatik",
+    "transmissionEng": "Automatic",
+    "fuel": "Benzin",
+    "fuelEng": "Gasoline",
+    "doors": 5,
+    "passengers": 5,
+    "luggage": "2 Büyük",
+    "luggageEng": "2 Large",
+    "ac": true,
+    "pricePerDay": 62,
+    "prices": {
+      "1_3": 68,
+      "4_7": 65,
+      "8_14": 62,
+      "15_21": 59,
+      "22_29": 56,
+      "30_plus": 53
+    },
+    "description": "Otomatik vitesli, modern ve donanımlı hatchback. Şehir içi kullanım ve çiftler için pratik, park etmesi kolay bir seçim.",
+    "descriptionEng": "A modern, well-equipped automatic hatchback. A practical, easy-to-park choice for city driving and couples.",
+    "image": "/images/cars/hyundai-i20.jpg",
+    "images": [
+      "/images/cars/hyundai-i20.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "renault-megane",
+    "name": "Renault Megane Sedan",
+    "category": "Konfor",
+    "categoryEng": "Comfort",
+    "type": "Sedan",
+    "typeEng": "Sedan",
+    "transmission": "Otomatik",
+    "transmissionEng": "Automatic",
+    "fuel": "Dizel",
+    "fuelEng": "Diesel",
+    "doors": 4,
+    "passengers": 5,
+    "luggage": "3 Büyük",
+    "luggageEng": "3 Large",
+    "ac": true,
+    "pricePerDay": 64,
+    "prices": {
+      "1_3": 70,
+      "4_7": 67,
+      "8_14": 64,
+      "15_21": 61,
+      "22_29": 58,
+      "30_plus": 54
+    },
+    "description": "Uzun yolların konfor ustası: dizel ekonomisi, otomatik şanzıman ve geniş bagajıyla Antalya-Alanya hattının favorisi.",
+    "descriptionEng": "A long-distance comfort master: diesel economy, automatic transmission, and a large trunk make it a favorite on the Antalya-Alanya route.",
+    "image": "/images/cars/renault-megane.jpg",
+    "images": [
+      "/images/cars/renault-megane.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "honda-city",
+    "name": "Honda City",
+    "category": "Konfor",
+    "categoryEng": "Comfort",
+    "type": "Sedan",
+    "typeEng": "Sedan",
+    "transmission": "Otomatik",
+    "transmissionEng": "Automatic",
+    "fuel": "Benzin",
+    "fuelEng": "Gasoline",
+    "doors": 4,
+    "passengers": 5,
+    "luggage": "3 Büyük",
+    "luggageEng": "3 Large",
+    "ac": true,
+    "pricePerDay": 82,
+    "prices": {
+      "1_3": 90,
+      "4_7": 86,
+      "8_14": 82,
+      "15_21": 78,
+      "22_29": 74,
+      "30_plus": 70
+    },
+    "description": "Honda güvenilirliği ve düşük yakıt tüketimini bir arada sunan, sessiz ve konforlu otomatik sedan.",
+    "descriptionEng": "A quiet, comfortable automatic sedan combining Honda reliability with low fuel consumption.",
+    "image": "/images/cars/honda-city.jpg",
+    "images": [
+      "/images/cars/honda-city.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "vw-caravelle",
+    "name": "Volkswagen Caravelle",
+    "category": "Grup",
+    "categoryEng": "Group",
+    "type": "Ticari",
+    "typeEng": "Commercial",
+    "transmission": "Manuel",
+    "transmissionEng": "Manual",
+    "fuel": "Dizel",
+    "fuelEng": "Diesel",
+    "doors": 4,
+    "passengers": 8,
+    "luggage": "6 Büyük",
+    "luggageEng": "6 Large",
+    "ac": true,
+    "pricePerDay": 96,
+    "prices": {
+      "1_3": 106,
+      "4_7": 101,
+      "8_14": 96,
+      "15_21": 91,
+      "22_29": 86,
+      "30_plus": 82
+    },
+    "description": "8 kişilik oturma düzeni ve dev bagaj hacmiyle kalabalık gruplar, aileler ve havalimanı transferleri için en pratik çözüm.",
+    "descriptionEng": "With seating for 8 and a huge luggage capacity, the most practical solution for large groups, families, and airport transfers.",
+    "image": "/images/cars/vw-caravelle.jpg",
+    "images": [
+      "/images/cars/vw-caravelle.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "opel-cascada",
+    "name": "Opel Cascada Cabrio",
+    "category": "Lüks",
+    "categoryEng": "Luxury",
+    "type": "Cabrio",
+    "typeEng": "Convertible",
+    "transmission": "Otomatik",
+    "transmissionEng": "Automatic",
+    "fuel": "Benzin",
+    "fuelEng": "Gasoline",
+    "doors": 2,
+    "passengers": 4,
+    "luggage": "2 Büyük",
+    "luggageEng": "2 Large",
+    "ac": true,
+    "pricePerDay": 133,
+    "prices": {
+      "1_3": 146,
+      "4_7": 140,
+      "8_14": 133,
+      "15_21": 126,
+      "22_29": 120,
+      "30_plus": 113
+    },
+    "description": "Akdeniz kıyısında üstü açık sürüş keyfi. Şık tasarımlı, otomatik vitesli cabrio ile tatilinize lüks katın.",
+    "descriptionEng": "Open-top driving pleasure on the Mediterranean coast. Add luxury to your holiday with this stylish automatic convertible.",
+    "image": "/images/cars/opel-cascada.jpg",
+    "images": [
+      "/images/cars/opel-cascada.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
+  },
+  {
+    "id": "bmw-4-cabrio",
+    "name": "BMW 4 Serisi Cabrio",
+    "category": "Lüks",
+    "categoryEng": "Luxury",
+    "type": "Cabrio",
+    "typeEng": "Convertible",
+    "transmission": "Otomatik",
+    "transmissionEng": "Automatic",
+    "fuel": "Dizel",
+    "fuelEng": "Diesel",
+    "doors": 2,
+    "passengers": 4,
+    "luggage": "2 Büyük",
+    "luggageEng": "2 Large",
+    "ac": true,
+    "pricePerDay": 174,
+    "prices": {
+      "1_3": 191,
+      "4_7": 183,
+      "8_14": 174,
+      "15_21": 165,
+      "22_29": 157,
+      "30_plus": 148
+    },
+    "description": "Filomuzun amiral gemisi: BMW sürüş dinamikleri ve açılır tavanıyla unutulmaz bir Alanya deneyimi için premium cabrio.",
+    "descriptionEng": "The flagship of our fleet: a premium convertible with BMW driving dynamics and a folding roof for an unforgettable Alanya experience.",
+    "image": "/images/cars/bmw-4-cabrio.jpg",
+    "images": [
+      "/images/cars/bmw-4-cabrio.jpg"
+    ],
+    "features": [
+      "Sınırsız KM",
+      "Muafiyetli Kasko",
+      "7/24 Yol Yardımı",
+      "Bebek Koltuğu (Ücretli)"
+    ],
+    "featuresEng": [
+      "Unlimited KM",
+      "Collision Damage Waiver",
+      "24/7 Roadside Assistance",
+      "Baby Seat (Paid)"
+    ]
   }
 ]
