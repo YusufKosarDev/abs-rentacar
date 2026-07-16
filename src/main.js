@@ -515,7 +515,16 @@ function setupNewsletterForms() {
       if (!emailInput || !emailInput.value) return;
 
       if (!NEWSLETTER_ENDPOINT) {
-        showGlobalToast(t.newsletter_err, 'error');
+        // No email service configured -> forward the subscription request via WhatsApp
+        const waText = localLang === 'tr'
+          ? `Merhaba, ABS Rent A Car. Kampanya ve indirimlerden haberdar olmak istiyorum.
+📧 E-posta: ${emailInput.value}`
+          : `Hello, ABS Rent A Car. I would like to receive news about campaigns and discounts.
+📧 Email: ${emailInput.value}`;
+        trackEvent('whatsapp_click', { page: window.location.pathname, source: 'newsletter' });
+        window.open(`https://wa.me/905323318418?text=${encodeURIComponent(waText)}`, '_blank');
+        showGlobalToast(t.newsletter_ok, 'success');
+        form.reset();
         return;
       }
 
@@ -1355,15 +1364,30 @@ function setupSpamProtection() {
 
     const actionUrl = form.getAttribute('action');
 
-    // Safe handling if endpoint is not set
+    // No email endpoint configured -> route the message through WhatsApp instead
     if (!actionUrl || actionUrl.includes('YOUR_ENDPOINT_HERE')) {
-      setTimeout(() => {
-        showToast("Formspree ID'nizi contact.html dosyasında güncelleyin! (Simüle Gönderim)", 'success');
-        if (submitBtnText) submitBtnText.textContent = originalText;
-        if (submitBtn) submitBtn.disabled = false;
-        form.reset();
-        if (tsInput) tsInput.value = Date.now();
-      }, 1000);
+      const name = form.querySelector('[name="name"]')?.value.trim() || '';
+      const phone = form.querySelector('[name="phone"]')?.value.trim() || '';
+      const msg = form.querySelector('[name="message"]')?.value.trim() || '';
+
+      const waText = localLang === 'tr'
+        ? `Merhaba, ABS Rent A Car. Web sitenizin iletişim formundan yazıyorum:
+👤 Ad Soyad: ${name}
+📞 Telefon: ${phone}
+💬 Mesaj: ${msg}`
+        : `Hello, ABS Rent A Car. I am writing via your website contact form:
+👤 Name: ${name}
+📞 Phone: ${phone}
+💬 Message: ${msg}`;
+
+      trackEvent('whatsapp_click', { page: window.location.pathname, source: 'contact_form' });
+      window.open(`https://api.whatsapp.com/send?phone=905323318418&text=${encodeURIComponent(waText)}`, '_blank');
+
+      showToast(t.form_success, 'success');
+      if (submitBtnText) submitBtnText.textContent = originalText;
+      if (submitBtn) submitBtn.disabled = false;
+      form.reset();
+      if (tsInput) tsInput.value = Date.now();
       return;
     }
 
