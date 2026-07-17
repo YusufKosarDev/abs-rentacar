@@ -35,9 +35,10 @@ async function loadSwiper() {
 let carsData = [...carsDataOriginal];
 let fleetSwiper = null;
 
-// /en/ altındaki statik İngilizce sayfalarda dil sabittir
-const IS_EN_ROUTE = window.location.pathname.startsWith('/en/');
-let currentLang = IS_EN_ROUTE ? 'en' : localStorage.getItem('abs_lang') || 'tr';
+// Statik dil rotaları: /en/, /de/, /ru/ altında dil sabittir
+const STATIC_LANGS = ['en', 'de', 'ru'];
+const ROUTE_LANG = STATIC_LANGS.find((l) => window.location.pathname.startsWith('/' + l + '/')) || null;
+let currentLang = ROUTE_LANG || localStorage.getItem('abs_lang') || 'tr';
 
 // Formspree endpoint for newsletter signups (set your form URL to activate)
 const NEWSLETTER_ENDPOINT = '';
@@ -115,7 +116,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupVideoModal();
   setupTestimonialsSwiper();
   
-  if (currentLang !== 'tr' && currentLang !== 'en') {
+  // Statik sözlüğü olmayan diller için Google Translate devralır
+  if (!ROUTE_LANG && !translations[currentLang]) {
     changeGoogleTranslate(currentLang);
   }
   
@@ -229,7 +231,7 @@ function setupNewsletterForms() {
   document.querySelectorAll('.newsletter-form').forEach(form => {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+      const localLang = translations[currentLang] ? currentLang : 'en';
       const t = translations[localLang];
       const emailInput = form.querySelector('input[type="email"]');
       if (!emailInput || !emailInput.value) return;
@@ -278,7 +280,7 @@ function setupQuickBookingForm() {
     const pickup = pickupSelect.options[pickupSelect.selectedIndex].text;
     const pickupDate = form.querySelector('[name="pickup_date"]').value;
 
-    const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+    const localLang = translations[currentLang] ? currentLang : 'en';
     const message = localLang === 'tr'
       ? `Merhaba, ABS Rent A Car. Web siteniz üzerinden araç kiralamak istiyorum:
 👤 Ad Soyad: ${fullname}
@@ -322,7 +324,7 @@ async function initDynamicData() {
 
 // Setup Language
 function setupLanguage() {
-  const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+  const localLang = translations[currentLang] ? currentLang : 'en';
 
   // Keep <html lang> in sync with the selected language
   document.documentElement.lang = currentLang;
@@ -340,7 +342,8 @@ function setupLanguage() {
     }
   });
 
-  // Dynamic Page Title translation
+  // Dynamic Page Title translation (statik dil rotalarında başlık build'de gömülü)
+  if (!ROUTE_LANG) {
   const pathname = window.location.pathname;
   if (pathname.includes('cars.html')) {
     document.title = localLang === 'tr' ? "Kiralık Araçlar Filomuz | ABS Rent A Car" : "Rental Car Fleet | ABS Rent A Car";
@@ -364,6 +367,7 @@ function setupLanguage() {
   } else {
     document.title = localLang === 'tr' ? "ABS Rent A Car & Transfer | Alanya Araç Kiralama" : "ABS Rent A Car & Transfer | Alanya Car Rental";
   }
+  }
 
   // Update language selector dropdown if present
   const langSelect = document.getElementById('lang-select');
@@ -379,20 +383,24 @@ function setupLanguageSelector() {
     langSelect.addEventListener('change', (e) => {
       const value = e.target.value;
       const path = window.location.pathname;
-      const page = path.split('/').pop() || 'index.html';
-      const EN_PAGES = ['index.html', 'cars.html', 'car-details.html', 'transfer.html', 'about.html', 'contact.html'];
+      // Kök (TR) karşılığı: dil önekini at
+      const basePath = ROUTE_LANG ? path.replace('/' + ROUTE_LANG, '') || '/' : path;
+      const page = basePath.split('/').pop() || 'index.html';
+      const STATIC_PAGES = ['index.html', 'cars.html', 'car-details.html', 'transfer.html', 'about.html', 'contact.html'];
+      // Araç sayfalarının statik sürümü yalnızca en'de var
+      const hasStatic = (lang) =>
+        STATIC_PAGES.includes(page) || basePath === '/' || (lang === 'en' && basePath.startsWith('/arac/'));
 
-      // EN seçildi ve bu sayfanın statik İngilizce sürümü var -> oraya git
-      if (value === 'en' && !IS_EN_ROUTE && (EN_PAGES.includes(page) || path === '/' || path.startsWith('/arac/'))) {
-        localStorage.setItem('abs_lang', 'en');
-        window.location.href = '/en' + (path === '/' ? '/' : path) + window.location.search;
+      // Statik sürümü olan bir dil seçildi -> o rotaya git
+      if (STATIC_LANGS.includes(value) && value !== ROUTE_LANG && hasStatic(value)) {
+        localStorage.setItem('abs_lang', value);
+        window.location.href = '/' + value + (basePath === '/' ? '/' : basePath) + window.location.search;
         return;
       }
-      // EN rotasındayken başka dil seçildi -> TR köküne dön (GT gerekiyorsa orada devralır)
-      if (value !== 'en' && IS_EN_ROUTE) {
+      // Statik rotadayken sözlüğü olmayan dil (veya TR) seçildi -> TR köküne dön
+      if (ROUTE_LANG && !STATIC_LANGS.includes(value)) {
         localStorage.setItem('abs_lang', value);
-        const target = path.replace(/^\/en\/?/, '/').replace('//', '/');
-        window.location.href = (target || '/') + window.location.search;
+        window.location.href = (basePath || '/') + window.location.search;
         return;
       }
 
@@ -522,7 +530,7 @@ function renderCars(cars, containerId) {
             <span class="price-amount">€${car.pricePerDay}</span>
             <span class="price-unit">/ ${currentLang === 'tr' ? 'Günlük' : 'Daily'}</span>
           </div>
-          <a href="arac/${car.id}.html" class="car-btn-circle" aria-label="${car.name} detayları">
+          <a href="${ROUTE_LANG ? '/en/arac/' : 'arac/'}${car.id}.html" class="car-btn-circle" aria-label="${car.name} detayları">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
@@ -669,7 +677,7 @@ function renderCarDetails() {
   const detailsContainer = document.getElementById('car-details-container');
   if (!detailsContainer) return;
 
-  const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+  const localLang = translations[currentLang] ? currentLang : 'en';
 
   // Unknown car id -> friendly not-found message instead of a blank page
   if (!car) {
@@ -1003,7 +1011,7 @@ function setupPriceCalculator(car) {
 
   if (!pickupInput || !returnInput || !calcDisplay || !car) return;
 
-  const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+  const localLang = translations[currentLang] ? currentLang : 'en';
   const t = translations[localLang];
 
   const calculatePrice = () => {
@@ -1054,7 +1062,7 @@ function setupSpamProtection() {
   const tsInput = document.getElementById('form-loaded-at');
   if (tsInput) tsInput.value = Date.now();
 
-  const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+  const localLang = translations[currentLang] ? currentLang : 'en';
   const t = translations[localLang];
 
   // Toast helper
@@ -1160,7 +1168,7 @@ function setupCookieConsent() {
   // If user already made a choice, don't show
   if (localStorage.getItem('abs_cookie_consent')) return;
 
-  const localLang = (currentLang === 'tr' || currentLang === 'en') ? currentLang : 'en';
+  const localLang = translations[currentLang] ? currentLang : 'en';
   const t = translations[localLang];
 
   const banner = document.createElement('div');

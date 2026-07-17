@@ -22,12 +22,14 @@ const pages = [
   '/favicon.svg',
   '/robots.txt',
   '/sitemap.xml',
-  '/en/',
-  '/en/cars.html',
-  '/en/car-details.html',
-  '/en/transfer.html',
-  '/en/about.html',
-  '/en/contact.html',
+  ...['en', 'de', 'ru'].flatMap((lang) => [
+    `/${lang}/`,
+    `/${lang}/cars.html`,
+    `/${lang}/car-details.html`,
+    `/${lang}/transfer.html`,
+    `/${lang}/about.html`,
+    `/${lang}/contact.html`,
+  ]),
 ];
 
 async function status(url, method = 'GET') {

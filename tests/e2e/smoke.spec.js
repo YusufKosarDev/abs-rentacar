@@ -103,6 +103,16 @@ test.describe('İngilizce statik route (/en/)', () => {
     await expect(page.locator('link[hreflang="tr"]')).toHaveAttribute('href', /\/arac\/dacia-duster\.html/);
   });
 
+  test('Almanca ve Rusça rotalar kendi dillerinde sunulur', async ({ page }) => {
+    await page.goto('/de/');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'de');
+    await expect(page.locator('h1')).toContainText('Sicher und komfortabel');
+
+    await page.goto('/ru/cars.html');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'ru');
+    await expect(page.locator('.page-banner h2')).toContainText('Аренда авто');
+  });
+
   test('dil seçici EN rotasından TR köküne döndürür', async ({ page }) => {
     await page.goto('/en/cars.html');
     await page.locator('#lang-select').selectOption('tr');
