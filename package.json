@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/validate-cars.mjs && vite build && node scripts/generate-car-pages.mjs",
+    "build": "node scripts/validate-cars.mjs && vite build && node scripts/generate-en-pages.mjs && node scripts/generate-car-pages.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint .",

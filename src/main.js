@@ -35,7 +35,9 @@ async function loadSwiper() {
 let carsData = [...carsDataOriginal];
 let fleetSwiper = null;
 
-let currentLang = localStorage.getItem('abs_lang') || 'tr';
+// /en/ altındaki statik İngilizce sayfalarda dil sabittir
+const IS_EN_ROUTE = window.location.pathname.startsWith('/en/');
+let currentLang = IS_EN_ROUTE ? 'en' : localStorage.getItem('abs_lang') || 'tr';
 
 // Formspree endpoint for newsletter signups (set your form URL to activate)
 const NEWSLETTER_ENDPOINT = '';
@@ -375,7 +377,26 @@ function setupLanguageSelector() {
   const langSelect = document.getElementById('lang-select');
   if (langSelect) {
     langSelect.addEventListener('change', (e) => {
-      currentLang = e.target.value;
+      const value = e.target.value;
+      const path = window.location.pathname;
+      const page = path.split('/').pop() || 'index.html';
+      const EN_PAGES = ['index.html', 'cars.html', 'car-details.html', 'transfer.html', 'about.html', 'contact.html'];
+
+      // EN seçildi ve bu sayfanın statik İngilizce sürümü var -> oraya git
+      if (value === 'en' && !IS_EN_ROUTE && (EN_PAGES.includes(page) || path === '/' || path.startsWith('/arac/'))) {
+        localStorage.setItem('abs_lang', 'en');
+        window.location.href = '/en' + (path === '/' ? '/' : path) + window.location.search;
+        return;
+      }
+      // EN rotasındayken başka dil seçildi -> TR köküne dön (GT gerekiyorsa orada devralır)
+      if (value !== 'en' && IS_EN_ROUTE) {
+        localStorage.setItem('abs_lang', value);
+        const target = path.replace(/^\/en\/?/, '/').replace('//', '/');
+        window.location.href = (target || '/') + window.location.search;
+        return;
+      }
+
+      currentLang = value;
       localStorage.setItem('abs_lang', currentLang);
       setupLanguage();
       changeGoogleTranslate(currentLang);

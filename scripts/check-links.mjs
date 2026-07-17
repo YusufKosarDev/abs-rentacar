@@ -22,6 +22,12 @@ const pages = [
   '/favicon.svg',
   '/robots.txt',
   '/sitemap.xml',
+  '/en/',
+  '/en/cars.html',
+  '/en/car-details.html',
+  '/en/transfer.html',
+  '/en/about.html',
+  '/en/contact.html',
 ];
 
 async function status(url, method = 'GET') {
@@ -71,6 +77,8 @@ for (const car of cars) {
   if (imgCode !== 200) problems.push(`ARAÇ GÖRSELİ ${car.image} -> ${imgCode}`);
   const pageCode = await status(`${SITE}/arac/${car.id}.html`);
   if (pageCode !== 200) problems.push(`ARAÇ SAYFASI /arac/${car.id}.html -> ${pageCode}`);
+  const enCode = await status(`${SITE}/en/arac/${car.id}.html`);
+  if (enCode !== 200) problems.push(`EN ARAÇ SAYFASI /en/arac/${car.id}.html -> ${enCode}`);
 }
 
 for (const img of externalImages) {

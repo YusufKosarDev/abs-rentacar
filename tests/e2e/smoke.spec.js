@@ -89,6 +89,28 @@ test.describe('Statik araç sayfaları (SEO)', () => {
   });
 });
 
+test.describe('İngilizce statik route (/en/)', () => {
+  test('ana sayfa İngilizce içerikle sunulur', async ({ page }) => {
+    await page.goto('/en/');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    await expect(page.locator('h1')).toContainText('Safe and Comfortable Ride in Alanya');
+    await expect(page.locator('[data-tab="cabrio"]')).toContainText('Convertible');
+  });
+
+  test('EN araç sayfası İngilizce üretilir ve TR eşine hreflang verir', async ({ page }) => {
+    await page.goto('/en/arac/dacia-duster.html');
+    await expect(page.locator('h1')).toContainText('Dacia Duster Rental');
+    await expect(page.locator('link[hreflang="tr"]')).toHaveAttribute('href', /\/arac\/dacia-duster\.html/);
+  });
+
+  test('dil seçici EN rotasından TR köküne döndürür', async ({ page }) => {
+    await page.goto('/en/cars.html');
+    await page.locator('#lang-select').selectOption('tr');
+    await page.waitForURL('**/cars.html');
+    expect(new URL(page.url()).pathname).toBe('/cars.html');
+  });
+});
+
 test.describe('Erişilebilirlik (axe — critical)', () => {
   for (const path of ['/', '/cars.html', '/contact.html']) {
     test(`${path} kritik ihlal içermez`, async ({ page }) => {
