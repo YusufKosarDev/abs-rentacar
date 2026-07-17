@@ -12,7 +12,8 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{js,css}\" \"tests/**/*.js\"",
     "validate:data": "node scripts/validate-cars.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "fix:lock": "node scripts/fix-lockfile.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
