@@ -11,7 +11,7 @@ Kurulum bir kez yapılır; sonrasında fiyat güncellemek için kod bilmeye gere
 3. Sağ üstten **Paylaş → Genel erişim → Bağlantıya sahip olan herkes → Görüntüleyen** yapın.
 4. Tarayıcıdaki adres çubuğundan **Sheet ID**'yi kopyalayın:
    `https://docs.google.com/spreadsheets/d/BURASI_SHEET_ID/edit`
-5. ID'yi Claude'a iletin (veya `src/sheets.js` içindeki `GOOGLE_SHEET_ID` alanına yapıştırın).
+5. ID'yi `src/sheets.js` içindeki `GOOGLE_SHEET_ID` alanına yapıştırın.
 
 ## Sütunların anlamı
 
