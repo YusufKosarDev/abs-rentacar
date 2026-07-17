@@ -106,7 +106,7 @@ test.describe('İngilizce statik route (/en/)', () => {
   test('dil seçici EN rotasından TR köküne döndürür', async ({ page }) => {
     await page.goto('/en/cars.html');
     await page.locator('#lang-select').selectOption('tr');
-    await page.waitForURL('**/cars.html');
+    await page.waitForURL((url) => url.pathname === '/cars.html');
     expect(new URL(page.url()).pathname).toBe('/cars.html');
   });
 });
