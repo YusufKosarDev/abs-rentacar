@@ -204,6 +204,8 @@ const translations = {
     ins3_desc: "Sürücü ve yolcular için ek bireysel kaza güvencesi seçeneği sunuyoruz; detayları rezervasyon sırasında sorabilirsiniz.",
     extras_title: "Ücretli Ek Hizmetler",
     extras_desc: "Navigasyon cihazı, çocuk koltuğu ve bebek koltuğu ek hizmetlerimizi rezervasyon sırasında talep edebilirsiniz.",
+    opt_manual: "Manuel",
+    opt_automatic: "Otomatik",
     marquee_1: "Lüks Araç mı Kiralamak İstiyorsunuz?",
     marquee_2: "7/24 Havalimanı Teslimatı",
     marquee_3: "VIP Transfer Hizmeti",
@@ -405,6 +407,8 @@ const translations = {
     ins3_desc: "We offer optional personal accident coverage for the driver and passengers; ask for details during reservation.",
     extras_title: "Paid Extras",
     extras_desc: "Navigation device, child seat, and baby seat extras can be requested during your reservation.",
+    opt_manual: "Manual",
+    opt_automatic: "Automatic",
     marquee_1: "Need to Rent a Luxury Car?",
     marquee_2: "24/7 Airport Delivery",
     marquee_3: "VIP Transfer Service",
@@ -519,6 +523,12 @@ function setupScrollTop() {
   btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   document.body.appendChild(btn);
+
+  // Keep the button above the cookie banner while it is visible
+  const banner = document.getElementById('cookie-banner');
+  if (banner) {
+    btn.style.bottom = (banner.offsetHeight + 20) + 'px';
+  }
 
   window.addEventListener('scroll', () => {
     btn.classList.toggle('visible', window.scrollY > 500);
@@ -1548,9 +1558,11 @@ function setupCookieConsent() {
     localStorage.setItem('abs_cookie_consent', choice);
     banner.classList.add('cookie-hidden');
     banner.addEventListener('animationend', () => banner.remove(), { once: true });
-    // Return the WhatsApp button to its normal spot
+    // Return the floating buttons to their normal spots
     const floatBtn = document.querySelector('.whatsapp-float');
     if (floatBtn) floatBtn.style.bottom = '';
+    const scrollBtn = document.querySelector('.scroll-top-btn');
+    if (scrollBtn) scrollBtn.style.bottom = '';
   };
 
   document.getElementById('cookie-accept').addEventListener('click', () => dismiss('accepted'));
