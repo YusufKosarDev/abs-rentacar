@@ -203,7 +203,11 @@ const translations = {
     ins3_title: "Bireysel Kaza Güvencesi",
     ins3_desc: "Sürücü ve yolcular için ek bireysel kaza güvencesi seçeneği sunuyoruz; detayları rezervasyon sırasında sorabilirsiniz.",
     extras_title: "Ücretli Ek Hizmetler",
-    extras_desc: "Navigasyon cihazı, çocuk koltuğu ve bebek koltuğu ek hizmetlerimizi rezervasyon sırasında talep edebilirsiniz."
+    extras_desc: "Navigasyon cihazı, çocuk koltuğu ve bebek koltuğu ek hizmetlerimizi rezervasyon sırasında talep edebilirsiniz.",
+    marquee_1: "Lüks Araç mı Kiralamak İstiyorsunuz?",
+    marquee_2: "7/24 Havalimanı Teslimatı",
+    marquee_3: "VIP Transfer Hizmeti",
+    marquee_4: "En Uygun Fiyat Garantisi"
   },
   en: {
     brand_name: "ABS RENT A CAR",
@@ -400,7 +404,11 @@ const translations = {
     ins3_title: "Personal Accident Coverage",
     ins3_desc: "We offer optional personal accident coverage for the driver and passengers; ask for details during reservation.",
     extras_title: "Paid Extras",
-    extras_desc: "Navigation device, child seat, and baby seat extras can be requested during your reservation."
+    extras_desc: "Navigation device, child seat, and baby seat extras can be requested during your reservation.",
+    marquee_1: "Need to Rent a Luxury Car?",
+    marquee_2: "24/7 Airport Delivery",
+    marquee_3: "VIP Transfer Service",
+    marquee_4: "Best Price Guarantee"
   }
 };
 
@@ -491,7 +499,31 @@ document.addEventListener('DOMContentLoaded', () => {
   setupWhatsAppFloat();
   setupConversionTracking();
   setupNavActive();
+  setupMarquee();
+  setupScrollTop();
 });
+
+// Duplicate marquee items once so the -50% loop is seamless
+function setupMarquee() {
+  const track = document.getElementById('marquee-track');
+  if (!track || track.dataset.cloned) return;
+  track.innerHTML += track.innerHTML;
+  track.dataset.cloned = 'true';
+}
+
+// Scroll-to-top button (all pages)
+function setupScrollTop() {
+  const btn = document.createElement('button');
+  btn.className = 'scroll-top-btn';
+  btn.setAttribute('aria-label', 'Sayfa başına dön');
+  btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+}
 
 // Highlight the nav item matching the current page (overrides hardcoded state)
 function setupNavActive() {

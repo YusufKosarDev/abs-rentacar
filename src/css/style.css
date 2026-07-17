@@ -200,7 +200,7 @@ a {
   font-weight: 700;
 }
 
-/* Buttons — pill shaped */
+/* Buttons — pill shaped, sliding fill on hover */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -216,6 +216,9 @@ a {
   transition: var(--transition-smooth);
   border: none;
   gap: 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 .btn-primary {
@@ -223,8 +226,22 @@ a {
   color: #ffffff;
 }
 
-.btn-primary:hover {
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--dark);
+  border-radius: inherit;
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(0);
+}
+
+.btn-primary:hover {
   color: #ffffff;
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(4, 4, 1, 0.2);
@@ -665,7 +682,7 @@ a {
 .car-price .price-amount {
   font-size: 1.6rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--accent);
 }
 
 .car-price .price-unit {
@@ -1467,7 +1484,7 @@ a {
 
 .about-image img {
   width: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: 46px;
   box-shadow: var(--shadow-premium);
 }
 
@@ -1505,6 +1522,83 @@ a {
   font-size: 1.1rem;
   margin-bottom: 6px;
   font-weight: 700;
+}
+
+/* MARQUEE BAND — scrolling announcement strip */
+.marquee-band {
+  background: var(--dark);
+  overflow: hidden;
+  padding: 26px 0;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 40px;
+  animation: marqueeScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-band:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.marquee-item.marquee-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+}
+
+.marquee-star {
+  color: var(--accent);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* SCROLL TO TOP */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9998;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--dark);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: var(--transition-smooth);
+  box-shadow: 0 8px 25px rgba(4, 4, 1, 0.25);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  background: var(--accent);
 }
 
 /* SERVICES SECTION */
@@ -1695,7 +1789,7 @@ a {
 
 .how-works-img {
   width: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: 46px;
   box-shadow: var(--shadow-premium);
 }
 
