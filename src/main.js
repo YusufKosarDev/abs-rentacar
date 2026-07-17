@@ -1,6 +1,34 @@
 // Core JS for ABS Rent A Car
+import '@fontsource/epilogue/400.css';
+import '@fontsource/epilogue/600.css';
+import '@fontsource/epilogue/700.css';
+import '@fontsource/epilogue/800.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/dm-sans/700.css';
+
 import carsDataOriginal from './data/cars.json';
 import { loadDynamicCarData } from './sheets.js';
+import { getDailyRate, calcRentalDays } from './lib/pricing.js';
+import { filterCars } from './lib/filters.js';
+
+// Swiper is loaded on demand only on pages that contain a slider
+let SwiperCtor = null;
+let swiperModules = null;
+
+async function loadSwiper() {
+  if (SwiperCtor) return SwiperCtor;
+  const [{ default: Swiper }, { Navigation, Pagination, Autoplay }] = await Promise.all([
+    import('swiper'),
+    import('swiper/modules'),
+    import('swiper/css'),
+    import('swiper/css/pagination'),
+  ]).then(([core, modules]) => [core, modules]);
+  swiperModules = { Navigation, Pagination, Autoplay };
+  SwiperCtor = Swiper;
+  return Swiper;
+}
 
 // Mutable car data (can be updated from Google Sheets)
 let carsData = [...carsDataOriginal];
@@ -477,7 +505,12 @@ function changeGoogleTranslate(langCode) {
 }
 
 // Initialize Page
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load the slider library first on pages that need it
+  if (document.querySelector('.swiper')) {
+    await loadSwiper();
+  }
+
   injectGoogleTranslate();
   setupLanguage();
   setupScrollHeader();
@@ -838,7 +871,6 @@ function renderCars(cars, containerId) {
   
   cars.forEach(car => {
     const category = currentLang === 'tr' ? car.category : car.categoryEng;
-    const type = currentLang === 'tr' ? car.type : car.typeEng;
     const transmission = currentLang === 'tr' ? car.transmission : car.transmissionEng;
     const fuel = currentLang === 'tr' ? car.fuel : car.fuelEng;
     const specAc = currentLang === 'tr' ? 'Klima' : 'A/C';
@@ -889,11 +921,12 @@ function renderCars(cars, containerId) {
 
   // Re-initialize Swiper for the homepage fleet slider
   if (containerId === 'home-fleet-grid') {
-    if (window.Swiper) {
+    if (SwiperCtor) {
       if (fleetSwiper) {
         fleetSwiper.destroy(true, true);
       }
-      fleetSwiper = new window.Swiper('.fleet-swiper', {
+      fleetSwiper = new SwiperCtor('.fleet-swiper', {
+        modules: [swiperModules.Navigation],
         slidesPerView: 1,
         spaceBetween: 30,
         navigation: {
@@ -924,12 +957,7 @@ function setupFleetTabs() {
 }
 
 function filterAndRenderCars(category, containerId) {
-  if (category === 'all') {
-    renderCars(carsData, containerId);
-  } else {
-    const filtered = carsData.filter(car => car.type.toLowerCase() === category.toLowerCase());
-    renderCars(filtered, containerId);
-  }
+  renderCars(filterCars(carsData, { type: category }), containerId);
 }
 
 // Process Accordion toggle clicks (How It Works)
@@ -976,8 +1004,9 @@ function setupVideoModal() {
 
 // Testimonials Swiper Slider
 function setupTestimonialsSwiper() {
-  if (window.Swiper && document.querySelector('.testimonials-swiper')) {
-    new window.Swiper('.testimonials-swiper', {
+  if (SwiperCtor && document.querySelector('.testimonials-swiper')) {
+    new SwiperCtor('.testimonials-swiper', {
+      modules: [swiperModules.Pagination, swiperModules.Autoplay],
       slidesPerView: 1,
       spaceBetween: 30,
       pagination: {
@@ -1012,17 +1041,11 @@ function setupFilters() {
 }
 
 function filterCarsPage() {
-  const searchVal = (document.getElementById('search-car-name')?.value || '').toLowerCase();
-  const typeVal = document.getElementById('filter-type')?.value || 'all';
-  const transVal = document.getElementById('filter-transmission')?.value || 'all';
-  
-  const filtered = carsData.filter(car => {
-    const matchesSearch = car.name.toLowerCase().includes(searchVal);
-    const matchesType = typeVal === 'all' || car.type.toLowerCase() === typeVal.toLowerCase();
-    const matchesTrans = transVal === 'all' || car.transmission.toLowerCase() === transVal.toLowerCase();
-    return matchesSearch && matchesType && matchesTrans;
+  const filtered = filterCars(carsData, {
+    search: document.getElementById('search-car-name')?.value || '',
+    type: document.getElementById('filter-type')?.value || 'all',
+    transmission: document.getElementById('filter-transmission')?.value || 'all',
   });
-  
   renderCars(filtered, 'all-cars-grid');
 }
 
@@ -1381,7 +1404,7 @@ function setupPriceCalculator(car) {
       return;
     }
 
-    const days = Math.ceil((new Date(returnDate) - new Date(pickup)) / (1000 * 60 * 60 * 24));
+    const days = calcRentalDays(pickup, returnDate);
 
     if (days < 1) {
       calcDisplay.innerHTML = `<p class="price-calc-hint">${t.calc_hint}</p>`;
@@ -1389,15 +1412,7 @@ function setupPriceCalculator(car) {
       return;
     }
 
-    // Determine tiered daily rate
-    let dailyRate;
-    if (days >= 30) dailyRate = car.prices['30_plus'];
-    else if (days >= 22) dailyRate = car.prices['22_29'];
-    else if (days >= 15) dailyRate = car.prices['15_21'];
-    else if (days >= 8) dailyRate = car.prices['8_14'];
-    else if (days >= 4) dailyRate = car.prices['4_7'];
-    else dailyRate = car.prices['1_3'];
-
+    const dailyRate = getDailyRate(car.prices, days);
     const totalPrice = dailyRate * days;
 
     calcDisplay.innerHTML = `

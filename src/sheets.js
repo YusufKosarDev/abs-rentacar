@@ -41,7 +41,7 @@ async function fetchSheetData() {
 /**
  * CSV string'i JSON dizisine çevirir
  */
-function parseCSV(csv) {
+export function parseCSV(csv) {
   const lines = csv.trim().split('\n');
   if (lines.length < 2) return null;
 
