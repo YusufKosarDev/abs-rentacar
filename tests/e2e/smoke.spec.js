@@ -69,6 +69,26 @@ test.describe('Araç detay sayfası', () => {
   });
 });
 
+test.describe('Statik araç sayfaları (SEO)', () => {
+  test('arac/dacia-duster.html tam içerikle sunulur', async ({ page }) => {
+    await page.goto('/arac/dacia-duster.html');
+    await expect(page.locator('h1')).toContainText('Dacia Duster');
+    await expect(page.locator('.price-table').first()).toContainText('Şanzıman');
+    await expect(page.locator('.btn-whatsapp')).toHaveAttribute('href', /905323318418/);
+    // Product JSON-LD mevcut ve geçerli
+    const ld = await page.locator('script[type="application/ld+json"]').textContent();
+    const parsed = JSON.parse(ld);
+    expect(parsed['@type']).toBe('Product');
+    expect(parsed.offers.price).toBe(42);
+  });
+
+  test('araç kartı statik sayfaya bağlanır', async ({ page }) => {
+    await page.goto('/cars.html');
+    const firstLink = page.locator('#all-cars-grid .car-btn-circle').first();
+    await expect(firstLink).toHaveAttribute('href', /arac\/.+\.html/);
+  });
+});
+
 test.describe('Erişilebilirlik (axe — critical)', () => {
   for (const path of ['/', '/cars.html', '/contact.html']) {
     test(`${path} kritik ihlal içermez`, async ({ page }) => {

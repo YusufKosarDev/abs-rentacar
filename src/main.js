@@ -501,7 +501,7 @@ function renderCars(cars, containerId) {
             <span class="price-amount">€${car.pricePerDay}</span>
             <span class="price-unit">/ ${currentLang === 'tr' ? 'Günlük' : 'Daily'}</span>
           </div>
-          <a href="car-details.html?id=${car.id}" class="car-btn-circle">
+          <a href="arac/${car.id}.html" class="car-btn-circle" aria-label="${car.name} detayları">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>

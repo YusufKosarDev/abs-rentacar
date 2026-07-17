@@ -64,11 +64,13 @@ for (const link of internalLinks) {
   if (code !== 200) problems.push(`İÇ LİNK ${link} -> ${code}`);
 }
 
-// cars.json'daki tüm yerel araç görselleri
+// cars.json'daki tüm yerel araç görselleri ve statik araç sayfaları
 const cars = JSON.parse(readFileSync(new URL('../src/data/cars.json', import.meta.url), 'utf8'));
 for (const car of cars) {
-  const code = await status(SITE + car.image);
-  if (code !== 200) problems.push(`ARAÇ GÖRSELİ ${car.image} -> ${code}`);
+  const imgCode = await status(SITE + car.image);
+  if (imgCode !== 200) problems.push(`ARAÇ GÖRSELİ ${car.image} -> ${imgCode}`);
+  const pageCode = await status(`${SITE}/arac/${car.id}.html`);
+  if (pageCode !== 200) problems.push(`ARAÇ SAYFASI /arac/${car.id}.html -> ${pageCode}`);
 }
 
 for (const img of externalImages) {
