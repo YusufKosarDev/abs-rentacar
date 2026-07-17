@@ -140,16 +140,16 @@
         <h3 data-i18n="search_title">Hızlı Araç Sorgulama</h3>
         <form class="booking-form" id="quick-booking-form">
           <div class="form-group">
-            <label data-i18n="label_fullname">Adınız Soyadınız</label>
-            <input type="text" name="fullname" placeholder="Ad Soyad girin" data-i18n="ph_fullname" required>
+            <label for="qb-fullname" data-i18n="label_fullname">Adınız Soyadınız</label>
+            <input id="qb-fullname" type="text" name="fullname" placeholder="Ad Soyad girin" data-i18n="ph_fullname" required>
           </div>
           <div class="form-group">
-            <label data-i18n="label_phone">Telefon</label>
-            <input type="tel" name="phone" placeholder="+90 5XX XXX XX XX" required>
+            <label for="qb-phone" data-i18n="label_phone">Telefon</label>
+            <input id="qb-phone" type="tel" name="phone" placeholder="+90 5XX XXX XX XX" required>
           </div>
           <div class="form-group">
-            <label data-i18n="label_pickup_loc">Alış Lokasyonu</label>
-            <select name="pickup" required>
+            <label for="qb-pickup" data-i18n="label_pickup_loc">Alış Lokasyonu</label>
+            <select id="qb-pickup" name="pickup" required>
               <option value="" disabled selected data-i18n="opt_select_loc">Lokasyon Seçin</option>
               <option value="Alanya" data-i18n="opt_alanya">Alanya Merkez</option>
               <option value="Konakli" data-i18n="opt_konakli">Konaklı Otelleri</option>
@@ -158,8 +158,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label data-i18n="label_pickup_date">Alış Tarihi</label>
-            <input type="date" name="pickup_date" required>
+            <label for="qb-pickup-date" data-i18n="label_pickup_date">Alış Tarihi</label>
+            <input id="qb-pickup-date" type="date" name="pickup_date" required>
           </div>
           <button type="submit" class="btn btn-primary pulse-button" data-i18n="btn_find_car">Araç Bul</button>
         </form>
@@ -625,7 +625,7 @@
         <p data-i18n="footer_newsletter_p">Kampanyalardan ve özel indirimlerden haberdar olmak için e-bültenimize kaydolun.</p>
         <form class="newsletter-form">
           <input type="email" placeholder="E-posta adresiniz" data-i18n="ph_email" required>
-          <button type="submit" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+          <button type="submit" class="btn btn-primary" aria-label="Bültene kaydol"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
         </form>
       </div>
     </div>
