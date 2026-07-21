@@ -61,9 +61,12 @@ for (const page of pages) {
     if (/^(https?:|tel:|mailto:|\/src|\/assets)/.test(href)) continue;
     internalLinks.add(href.split('#')[0].split('?')[0]);
   }
-  // Kendi domainimiz dışındaki TÜM mutlak kaynaklar (görsel, script, stylesheet).
+  // Kendi domainimiz dışında kalan, dosya uzantısıyla biten tüm mutlak adresler:
+  // gömülü kaynaklar (Leaflet CDN) ve legal.html'deki Wikimedia atıf bağlantıları.
   // Önceki dar desen (yalnızca images.* ana makinesi) hotlink edilen bir görselin
   // fark edilmeden kalmasına yol açıyordu; kapsam bilinçli olarak geniş tutuluyor.
+  // Atıf bağlantılarının da taranması istenen bir yan etki: ölü bir atıf linki
+  // CC lisans şartlarının ihlali anlamına gelir.
   for (const m of html.matchAll(/(?:src|href|content)="(https:\/\/[^"]+)"/g)) {
     const asset = m[1];
     if (asset.startsWith(SITE)) continue;
@@ -92,11 +95,11 @@ for (const car of cars) {
 
 for (const asset of externalAssets) {
   const code = await status(asset, 'HEAD');
-  if (code !== 200) problems.push(`DIŞ KAYNAK ${asset.slice(0, 80)} -> ${code}`);
+  if (code !== 200) problems.push(`DIŞ ADRES ${asset.slice(0, 80)} -> ${code}`);
 }
 
 console.log(
-  `Tarama: ${pages.length} sayfa, ${internalLinks.size} iç link, ${cars.length} araç görseli, ${externalAssets.size} dış kaynak`
+  `Tarama: ${pages.length} sayfa, ${internalLinks.size} iç link, ${cars.length} araç görseli, ${externalAssets.size} dış adres`
 );
 
 if (problems.length) {
