@@ -61,6 +61,56 @@ function hreflangBlock(page) {
   return lines.join('\n');
 }
 
+/*
+ * JSON-LD bloklarını dile taşır.
+ *
+ * Görünür SSS akordeonu data-i18n ile çevriliyordu ama yapılandırılmış veri
+ * kaynakta sabit yazılıydı; sonuçta /en/ ve /de/ sayfaları Türkçe FAQPage
+ * yayınlıyordu. Şema, görünür içerikle aynı dilde olmak zorunda — aksi halde
+ * arama motoru İngilizce arayana Türkçe zengin sonuç gösterir.
+ *
+ * SSS metinleri sözlükten (q1..qN / a1..aN) yeniden kuruluyor; böylece şema ile
+ * akordeon aynı kaynaktan besleniyor ve birbirinden ayrışamıyor.
+ */
+function localizeJsonLd(html, lang, page) {
+  const dict = translations[lang];
+  const pageUrl = langUrl(lang, page);
+
+  return html.replace(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+    (block, body) => {
+      let data;
+      try {
+        data = JSON.parse(body);
+      } catch {
+        console.warn(`uyarı: ${lang}/${page} içinde ayrıştırılamayan JSON-LD atlandı`);
+        return block;
+      }
+
+      if (data['@type'] === 'FAQPage' && Array.isArray(data.mainEntity)) {
+        data.mainEntity = data.mainEntity.map((entry, i) => {
+          const q = dict[`q${i + 1}`];
+          const a = dict[`a${i + 1}`];
+          if (!q || !a) return entry;
+          return {
+            ...entry,
+            name: q,
+            acceptedAnswer: { ...entry.acceptedAnswer, text: a },
+          };
+        });
+      }
+
+      if (data['@type'] === 'AutoRental') {
+        data['@id'] = pageUrl + '#business';
+        data.url = pageUrl;
+      }
+
+      data.inLanguage = lang;
+      return `<script type="application/ld+json">\n${JSON.stringify(data, null, 2)}\n  </script>`;
+    }
+  );
+}
+
 function applyDictionary(html, dict) {
   let missing = 0;
 
@@ -124,6 +174,8 @@ for (const page of Object.keys(PAGE_META)) {
       // og:url canonical ile aynı olmalı; aksi halde paylaşım önizlemesi
       // dil sayfası yerine TR eşini gösterir
       .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${langUrl(lang, page)}$2`);
+
+    out = localizeJsonLd(out, lang, page);
 
     // Dil kapsamındaki sayfalara giden iç linkler aynı dilde kalsın
     out = out

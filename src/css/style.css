@@ -11,6 +11,13 @@
   --bg-soft: #FFF8F6;
   --accent: #FF3600;
   --accent-hover: #d92e00;
+  /*
+   * Küçük metin için AA güvenli aksan tonu.
+   * --accent (#FF3600) beyaz/krem zemine karşı 3.46:1 verir; bu, büyük metin
+   * eşiğini (3.0) geçer ama küçük metin eşiğini (4.5) geçmez. Aynı tonun daha
+   * koyu hâli 4.54:1 verir, marka kimliği korunur.
+   */
+  --accent-text: #d92e00;
   --accent-soft: rgba(255, 54, 0, 0.08);
   --accent-border: rgba(255, 54, 0, 0.25);
   --text-body: #616161;
@@ -28,7 +35,7 @@
   --bg-light-section: var(--bg-soft);
   --bg-glass: #ffffff;
   --border-glass: var(--divider);
-  --accent-gold: var(--accent);
+  --accent-gold: var(--accent-text);
   --accent-gold-hover: var(--accent-hover);
   --accent-gold-gradient: linear-gradient(135deg, #FF3600 0%, #ff5c2e 100%);
   --text-primary: var(--dark);
@@ -154,7 +161,7 @@ a {
 
 /* Section tag/badge — small accent label above headings */
 .section-badge {
-  color: var(--accent);
+  color: var(--accent-text);
   font-family: var(--font-body);
   text-transform: capitalize;
   font-weight: 700;
@@ -341,7 +348,7 @@ a {
 }
 
 .nav-links li.active a {
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .nav-actions {
@@ -476,7 +483,7 @@ a {
   box-shadow: var(--shadow-premium);
 }
 
-.booking-widget h3 {
+.booking-widget h2 {
   font-size: 1.4rem;
   margin-bottom: 25px;
   font-weight: 700;
@@ -566,9 +573,9 @@ a {
 
 .tab-btn.active,
 .tab-btn:hover {
-  background: var(--accent);
+  background: var(--accent-text);
   color: #ffffff;
-  border-color: var(--accent);
+  border-color: var(--accent-text);
 }
 
 .cars-grid {
@@ -620,7 +627,7 @@ a {
   position: absolute;
   top: 20px;
   left: 20px;
-  background: var(--accent);
+  background: var(--accent-text);
   color: #ffffff;
   padding: 6px 14px;
   border-radius: var(--radius-pill);
@@ -1439,7 +1446,7 @@ a {
 }
 
 .cookie-btn-accept {
-  background: var(--accent);
+  background: var(--accent-text);
   color: #ffffff;
 }
 
@@ -1515,7 +1522,7 @@ a {
   flex-shrink: 0;
 }
 
-.about-feature-item h4 {
+.about-feature-item h3 {
   font-size: 1.1rem;
   margin-bottom: 6px;
   font-weight: 700;
@@ -1750,7 +1757,7 @@ a {
   color: var(--accent);
 }
 
-.process-header h4 {
+.process-header h3 {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
@@ -1794,7 +1801,7 @@ a {
   position: absolute;
   bottom: 30px;
   right: 30px;
-  background: var(--accent);
+  background: var(--accent-text);
   border-radius: var(--radius-lg);
   padding: 25px 35px;
   display: flex;
@@ -1817,7 +1824,9 @@ a {
   text-transform: capitalize;
   letter-spacing: 0.5px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  /* Turuncu zeminde yarı saydam beyaz 3.16:1 veriyordu; 13.6px küçük metin
+     sayıldığı için 4.5:1 gerekiyor */
+  color: #ffffff;
 }
 
 /* VIDEO SHOWCASE SECTION */
@@ -2035,7 +2044,7 @@ a {
   width: 50px;
   height: 50px;
   border-radius: var(--radius-full);
-  background: var(--accent);
+  background: var(--accent-text);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -2044,7 +2053,7 @@ a {
   font-family: var(--font-heading);
 }
 
-.testimonial-author h4 {
+.testimonial-author .testimonial-name {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 3px;
@@ -2065,7 +2074,7 @@ a {
 
 /* CTA BANNER — accent block */
 .cta-banner {
-  background: var(--accent);
+  background: var(--accent-text);
   padding: 85px 0;
   text-align: center;
 }
@@ -2094,7 +2103,8 @@ a {
 .cta-content p {
   font-size: 1.15rem;
   margin-bottom: 35px;
-  color: rgba(255, 255, 255, 0.85);
+  /* Turuncu zeminde yarı saydam beyaz AA eşiğini geçmiyordu */
+  color: #ffffff;
 }
 
 .cta-banner .btn-primary {
@@ -2148,7 +2158,7 @@ a {
   position: absolute;
   bottom: 15px;
   left: 15px;
-  background: var(--accent);
+  background: var(--accent-text);
   color: #ffffff;
   padding: 6px 14px;
   border-radius: var(--radius-pill);

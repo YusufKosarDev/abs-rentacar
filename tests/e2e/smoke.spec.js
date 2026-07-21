@@ -1,11 +1,19 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-/** Çerez bandını kapat (diğer etkileşimleri engellemesin) */
+/**
+ * Çerez bandını kapat (diğer etkileşimleri engellemesin).
+ *
+ * Bandın DOM'dan tamamen ayrılmasını bekliyoruz: kapanış animasyonu sürerken
+ * ölçüm yapılırsa renkler yarı saydam hâlde okunuyor ve erişilebilirlik
+ * denetimi gerçekte var olmayan kontrast ihlalleri raporluyordu.
+ */
 async function dismissCookies(page) {
+  const banner = page.locator('#cookie-banner');
   const accept = page.locator('#cookie-accept');
   if (await accept.isVisible({ timeout: 3000 }).catch(() => false)) {
     await accept.click();
+    await banner.waitFor({ state: 'detached', timeout: 5000 }).catch(() => {});
   }
 }
 
@@ -121,16 +129,24 @@ test.describe('İngilizce statik route (/en/)', () => {
   });
 });
 
-test.describe('Erişilebilirlik (axe — critical)', () => {
+/*
+ * Eşik bilinçli olarak "serious" seviyesini de kapsıyor.
+ * Yalnızca "critical" denetlendiğinde kontrast, başlık sırası ve erişilebilir
+ * ad eksikleri testten kaçıyordu; bunlar Lighthouse denetiminde düşüyor ama
+ * E2E yeşil kalıyordu. Kör noktayı kapatmak için kapsam genişletildi.
+ */
+const BLOCKING_IMPACTS = ['critical', 'serious'];
+
+test.describe('Erişilebilirlik (axe — critical + serious)', () => {
   for (const path of ['/', '/cars.html', '/contact.html']) {
-    test(`${path} kritik ihlal içermez`, async ({ page }) => {
+    test(`${path} kritik/ciddi ihlal içermez`, async ({ page }) => {
       await page.goto(path);
       await dismissCookies(page);
       const results = await new AxeBuilder({ page }).analyze();
-      const critical = results.violations.filter((v) => v.impact === 'critical');
+      const blocking = results.violations.filter((v) => BLOCKING_IMPACTS.includes(v.impact));
       expect(
-        critical.map((v) => `${v.id}: ${v.nodes.length} öğe`),
-        JSON.stringify(critical, null, 2).slice(0, 2000)
+        blocking.map((v) => `${v.id} [${v.impact}]: ${v.nodes.length} öğe`),
+        JSON.stringify(blocking, null, 2).slice(0, 3000)
       ).toEqual([]);
     });
   }

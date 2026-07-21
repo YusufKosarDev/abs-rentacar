@@ -56,8 +56,25 @@ function showGlobalToast(message, type) {
   setTimeout(() => toast.classList.remove('toast-visible'), 4500);
 }
 
+/*
+ * Google Translate yalnızca makine çevirisi gereken diller için yüklenir.
+ *
+ * TR/EN/DE/RU elle çevrilmiş sözlük ve statik rotalarla karşılanıyor; bu
+ * diller için Translate'e hiç ihtiyaç yok. Widget her sayfa yüklemesinde
+ * koşulsuz enjekte edildiğinde ~89 KB betik kritik yola giriyor ve
+ * ziyaretçilerin büyük çoğunluğu bunu hiç kullanmıyor.
+ *
+ * Artık yalnızca aşağıdaki dillerden biri seçildiğinde (veya sayfa böyle bir
+ * dil tercihiyle açıldığında) yükleniyor.
+ */
+const MACHINE_LANGS = ['fr', 'es', 'it', 'pt', 'nl', 'ar', 'zh-CN'];
+let googleTranslateRequested = false;
+
 // Google Translate Integration Helper
 function injectGoogleTranslate() {
+  if (googleTranslateRequested) return;
+  googleTranslateRequested = true;
+
   window.googleTranslateElementInit = function() {
     new google.translate.TranslateElement({
       pageLanguage: 'tr',
@@ -89,6 +106,10 @@ function injectGoogleTranslate() {
 }
 
 function changeGoogleTranslate(langCode) {
+  // Sözlüğü olan diller için widget'a hiç gerek yok
+  if (!MACHINE_LANGS.includes(langCode)) return;
+  injectGoogleTranslate();
+
   const googleSelect = document.querySelector('.goog-te-combo');
   if (googleSelect) {
     googleSelect.value = langCode;
@@ -105,7 +126,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadSwiper();
   }
 
-  injectGoogleTranslate();
+  // Ziyaretçi daha önce makine çevirisi gereken bir dil seçtiyse geri yükle
+  if (MACHINE_LANGS.includes(currentLang)) {
+    changeGoogleTranslate(currentLang);
+  }
   setupLanguage();
   setupScrollHeader();
   setupMobileMenu();
