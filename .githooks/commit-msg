@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Commit mesajından yapay zeka aracı atıflarını temizler.
+#
+# Kurulum otomatiktir: `npm install` çalıştığında package.json içindeki
+# "prepare" adımı `core.hooksPath` değerini .githooks olarak ayarlar.
+# Elle kurmak için: git config core.hooksPath .githooks
+#
+# Depo tek kişilik olduğu için yalnızca bilinen yapay zeka sağlayıcılarına
+# ait Co-Authored-By satırları silinir; gerçek bir ortak yazar eklenirse
+# satırı korunur.
+
+MSG_FILE="$1"
+[ -f "$MSG_FILE" ] || exit 0
+
+TMP="$MSG_FILE.tmp"
+
+grep -viE \
+  -e '^Co-Authored-By:.*(anthropic|claude|openai|chatgpt|copilot|gemini)' \
+  -e 'Generated with \[?(Claude|GPT|Copilot|Cursor)' \
+  "$MSG_FILE" > "$TMP"
+
+# Mesajın tamamı süzülürse (beklenmez) orijinali koru.
+if [ -s "$TMP" ]; then
+  mv "$TMP" "$MSG_FILE"
+else
+  rm -f "$TMP"
+fi
+
+exit 0
