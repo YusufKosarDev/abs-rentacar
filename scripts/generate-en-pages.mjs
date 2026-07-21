@@ -120,7 +120,10 @@ for (const page of Object.keys(PAGE_META)) {
       .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${title}$2`)
       .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${desc}$2`)
       .replace('content="tr_TR"', `content="${OG_LOCALE[lang]}"`)
-      .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${langUrl(lang, page)}">`);
+      .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${langUrl(lang, page)}">`)
+      // og:url canonical ile aynı olmalı; aksi halde paylaşım önizlemesi
+      // dil sayfası yerine TR eşini gösterir
+      .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${langUrl(lang, page)}$2`);
 
     // Dil kapsamındaki sayfalara giden iç linkler aynı dilde kalsın
     out = out
