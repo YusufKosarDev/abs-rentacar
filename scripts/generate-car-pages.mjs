@@ -3,11 +3,12 @@
  * dist/en/arac/<id>.html (EN). generate-en-pages.mjs SONRASI çalışır
  * (EN shell'i dist/en/cars.html'den devralır). Sitemap'i günceller.
  */
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE_URL, SITE_URL_TOKEN } from '../site.config.js';
 
-const SITE = 'https://abs-rentacar.vercel.app';
+const SITE = SITE_URL;
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 
 const cars = JSON.parse(readFileSync(new URL('../src/data/cars.json', import.meta.url), 'utf8'));
@@ -248,3 +249,31 @@ if (!sitemap.includes('/arac/')) {
   writeFileSync(sitemapPath, sitemap);
   console.log('sitemap.xml araç sayfalarıyla güncellendi');
 }
+
+/*
+ * Son kontrol: build zincirinin sonunda dist içinde çözülmemiş __SITE_URL__
+ * kalmamalı. Kalırsa canonical/og:url sessizce bozulur ve hiçbir test bunu
+ * yakalamaz — bu yüzden build'i burada durduruyoruz.
+ */
+function scanForToken(dir) {
+  const found = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      found.push(...scanForToken(full));
+    } else if (/\.(html|xml|txt|json)$/.test(entry.name)) {
+      if (readFileSync(full, 'utf8').includes(SITE_URL_TOKEN)) found.push(full);
+    }
+  }
+  return found;
+}
+
+const unresolved = scanForToken(DIST);
+if (unresolved.length) {
+  console.error(
+    `HATA: ${unresolved.length} dosyada çözülmemiş ${SITE_URL_TOKEN} kaldı:\n` +
+      unresolved.map((f) => '  ' + f.replace(DIST, '')).join('\n')
+  );
+  process.exit(1);
+}
+console.log(`site adresi çözüldü: ${SITE_URL}`);

@@ -1,11 +1,12 @@
 /**
  * Canlı site sağlık taraması: sayfalar, iç linkler, yerel araç görselleri
- * ve dış görsellerin erişilebilirliğini kontrol eder.
+ * ve dış kaynakların erişilebilirliğini kontrol eder.
  * Kırık kaynak bulunursa 1 koduyla çıkar (CI'da işi kırmızıya düşürür).
  */
 import { readFileSync } from 'node:fs';
+import { SITE_URL } from '../site.config.js';
 
-const SITE = process.env.SITE_URL || 'https://abs-rentacar.vercel.app';
+const SITE = process.env.SITE_URL || SITE_URL;
 
 const pages = [
   '/',
@@ -43,7 +44,7 @@ async function status(url, method = 'GET') {
 
 const problems = [];
 const internalLinks = new Set();
-const externalImages = new Set();
+const externalAssets = new Set();
 
 for (const page of pages) {
   const url = SITE + page;
@@ -60,8 +61,14 @@ for (const page of pages) {
     if (/^(https?:|tel:|mailto:|\/src|\/assets)/.test(href)) continue;
     internalLinks.add(href.split('#')[0].split('?')[0]);
   }
-  for (const m of html.matchAll(/(?:src|content)="(https:\/\/images\.[^"]+)"/g)) {
-    externalImages.add(m[1]);
+  // Kendi domainimiz dışındaki TÜM mutlak kaynaklar (görsel, script, stylesheet).
+  // Önceki dar desen (yalnızca images.* ana makinesi) hotlink edilen bir görselin
+  // fark edilmeden kalmasına yol açıyordu; kapsam bilinçli olarak geniş tutuluyor.
+  for (const m of html.matchAll(/(?:src|href|content)="(https:\/\/[^"]+)"/g)) {
+    const asset = m[1];
+    if (asset.startsWith(SITE)) continue;
+    if (!/\.(png|jpe?g|webp|avif|gif|svg|js|css)(\?|$)/i.test(asset)) continue;
+    externalAssets.add(asset);
   }
 }
 
@@ -83,13 +90,13 @@ for (const car of cars) {
   if (enCode !== 200) problems.push(`EN ARAÇ SAYFASI /en/arac/${car.id}.html -> ${enCode}`);
 }
 
-for (const img of externalImages) {
-  const code = await status(img, 'HEAD');
-  if (code !== 200) problems.push(`DIŞ GÖRSEL ${img.slice(0, 80)} -> ${code}`);
+for (const asset of externalAssets) {
+  const code = await status(asset, 'HEAD');
+  if (code !== 200) problems.push(`DIŞ KAYNAK ${asset.slice(0, 80)} -> ${code}`);
 }
 
 console.log(
-  `Tarama: ${pages.length} sayfa, ${internalLinks.size} iç link, ${cars.length} araç görseli, ${externalImages.size} dış görsel`
+  `Tarama: ${pages.length} sayfa, ${internalLinks.size} iç link, ${cars.length} araç görseli, ${externalAssets.size} dış kaynak`
 );
 
 if (problems.length) {

@@ -26,6 +26,7 @@ export default [
       'vitest.config.js',
       'playwright.config.js',
       'eslint.config.js',
+      'site.config.js',
     ],
     languageOptions: {
       ecmaVersion: 2022,

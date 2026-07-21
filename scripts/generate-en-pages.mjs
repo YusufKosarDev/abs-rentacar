@@ -8,8 +8,9 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { translations } from '../src/i18n/translations.js';
+import { SITE_URL } from '../site.config.js';
 
-const SITE = 'https://abs-rentacar.vercel.app';
+const SITE = SITE_URL;
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url));
 
 const PAGE_META = {
