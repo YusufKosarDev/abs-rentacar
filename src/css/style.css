@@ -1194,6 +1194,26 @@ a {
     opacity: 0.4;
   }
 
+  /*
+   * .hero bir flex satırı; hero metni ile hızlı sorgulama kartı masaüstünde
+   * yan yana duruyor. Dar ekranda satır sarmalanmadığı için kart viewport'un
+   * sağına taşıp .hero'nun overflow:hidden kuralıyla kırpılıyordu.
+   * Bu genişlikte iki blok alt alta yığılmalı.
+   */
+  .hero {
+    flex-wrap: wrap;
+  }
+
+  .hero-content,
+  .booking-widget-container {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+
+  .booking-widget-container {
+    margin-top: 40px;
+  }
+
   .hero-content {
     text-align: center;
     margin: 0 auto;
@@ -1233,6 +1253,19 @@ a {
 
   .hero-buttons .btn {
     width: 100%;
+  }
+
+  /*
+   * Telefon genişliğinde logo + hamburger + dil seçici + rezervasyon butonu
+   * tek satıra sığmıyordu; buton viewport'u 25-113px aşıp kırpılıyordu.
+   * Sayfa yatay kaymadığı için (taşan kısım gizleniyor) hiçbir test bunu
+   * yakalamıyordu.
+   *
+   * Rezervasyon yolu bu genişlikte zaten iki yerden erişilebilir: hamburger
+   * menüdeki "Kiralık Araçlar" ve her zaman görünen WhatsApp butonu.
+   */
+  .btn-book-header {
+    display: none;
   }
 }
 
