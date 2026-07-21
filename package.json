@@ -27,9 +27,9 @@
     "vitest": "^4.1.10"
   },
   "dependencies": {
-    "@fontsource/dm-sans": "^5.2.8",
-    "@fontsource/epilogue": "^5.2.8",
-    "swiper": "^14.0.5"
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/epilogue": "^5.3.0",
+    "swiper": "^14.0.6"
   },
   "optionalDependencies": {
     "@emnapi/core": "1.11.2",
