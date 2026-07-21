@@ -2,7 +2,7 @@
 
 Alanya, Konaklı ve Gazipaşa/Antalya havalimanı bölgelerinde araç kiralama ve VIP transfer hizmeti sunan **ABS Rent A Car**'ın web sitesi.
 
-**🌐 Canlı Site:** [abs-rentacar.vercel.app](https://abs-rentacar.vercel.app)
+**🌐 Canlı Site:** [abs-rentacar.com](https://abs-rentacar.com)
 
 ## Özellikler
 

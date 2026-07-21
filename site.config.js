@@ -9,7 +9,7 @@
  * Özel domain bağlandığında DEĞİŞTİRİLECEK TEK YER burasıdır.
  * Sondaki eğik çizgi (/) olmamalı.
  */
-export const SITE_URL = 'https://abs-rentacar.vercel.app';
+export const SITE_URL = 'https://abs-rentacar.com';
 
 /** HTML/metin dosyalarında değiştirilen yer tutucu. */
 export const SITE_URL_TOKEN = '__SITE_URL__';
