@@ -151,3 +151,122 @@ test.describe('Erişilebilirlik (axe — critical + serious)', () => {
     });
   }
 });
+
+/*
+ * Dar ekranda yatay taşma koruması.
+ *
+ * Başlıktaki rezervasyon butonu ve hero'daki sorgulama kartı bir dönem
+ * viewport dışına taşıyordu. Taşan kısım .hero ve başlıktaki overflow:hidden
+ * ile kırpıldığı için sayfa yatay olarak KAYMIYORDU; scrollWidth değeri
+ * innerWidth'e eşit kalıyor ve hem E2E hem Lighthouse temiz görünüyordu.
+ * Görsel ise bozuktu: buton ve form kartı yarıdan kesiliyordu.
+ *
+ * Bu yüzden scrollWidth karşılaştırması yeterli değil; kritik blokların
+ * gerçek kutu sınırları (getBoundingClientRect) viewport'la karşılaştırılıyor.
+ *
+ * Kapsam bilinçli olarak isim listesiyle sınırlı. Tüm DOM'u tarayan genel bir
+ * kontrol; kayan yazı şeridi, slider slaytları, honeypot alanı ve harita
+ * karoları gibi KASITLI olarak taşan öğeler yüzünden sürekli yanlış alarm
+ * verir. Buradaki seçiciler "her zaman ekrana sığmalı" diye tanımlanmış
+ * bloklar.
+ */
+const OVERFLOW_WIDTHS = [320, 360, 390, 412, 768];
+
+const OVERFLOW_PAGES = [
+  {
+    path: '/',
+    selectors: ['.nav-container', '.nav-actions', '.hero-content', '.booking-widget', '.services-grid', '.footer-grid'],
+  },
+  {
+    path: '/cars.html',
+    selectors: ['.nav-container', '.nav-actions', '.page-banner .container', '.filter-sidebar', '.cars-grid', '.footer-grid'],
+  },
+  {
+    path: '/transfer.html',
+    selectors: ['.nav-container', '.nav-actions', '.page-banner .container', '.transfer-grid', '.footer-grid'],
+  },
+  {
+    path: '/contact.html',
+    selectors: ['.nav-container', '.nav-actions', '.page-banner .container', '.contact-layout', '.footer-grid'],
+  },
+  {
+    path: '/en/',
+    selectors: ['.nav-container', '.nav-actions', '.hero-content', '.booking-widget', '.footer-grid'],
+  },
+  {
+    path: '/arac/dacia-duster.html',
+    selectors: ['.nav-container', '.nav-actions', '.details-layout', '.booking-panel', '.footer-grid'],
+  },
+];
+
+/** Verilen genişlikte, seçicilerin viewport dışına taşıp taşmadığını döndürür. */
+async function findOverflow(page, selectors) {
+  return page.evaluate((sels) => {
+    // Kaydırma çubuğunu dışarıda bırakır; innerWidth'ten daha güvenilir.
+    const vw = document.documentElement.clientWidth;
+    const problems = [];
+
+    for (const sel of sels) {
+      const nodes = document.querySelectorAll(sel);
+      if (!nodes.length) {
+        problems.push(`${sel}: sayfada bulunamadı (seçici eskimiş olabilir)`);
+        continue;
+      }
+      nodes.forEach((el, i) => {
+        const cs = getComputedStyle(el);
+        // Gizlenmiş olması sorun değil: dar ekranda gizlemek geçerli bir çözüm.
+        if (cs.display === 'none' || cs.visibility === 'hidden') return;
+        const b = el.getBoundingClientRect();
+        if (b.width < 2 || b.height < 2) return;
+        const right = Math.round(b.right - vw);
+        const left = Math.round(b.left);
+        if (right > 1) problems.push(`${sel}[${i}] sağdan ${right}px taşıyor`);
+        if (left < -1) problems.push(`${sel}[${i}] soldan ${-left}px taşıyor`);
+      });
+    }
+    return problems;
+  }, selectors);
+}
+
+test.describe('Dar ekranda yatay taşma', () => {
+  for (const { path, selectors } of OVERFLOW_PAGES) {
+    test(`${path} kritik blokları ekrana sığdırır`, async ({ page }) => {
+      const failures = [];
+
+      // Giriş animasyonlarını son karelerine sabitle: yerleşimi ölçüyoruz,
+      // geçiş karesini değil. .animate-fade-in-* öğeleri translateX(-30px)'ten
+      // başlar; animasyon sürerken ölçüm birkaç piksellik sahte "taşma"
+      // raporlar. Stil goto SONRASI enjekte edilmeli (init script DOM hazır
+      // olmadan çalışıp sessizce düşüyor).
+      const freezeAnimations = `*, *::before, *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+      }`;
+
+      for (const width of OVERFLOW_WIDTHS) {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path);
+        await page.addStyleTag({ content: freezeAnimations });
+        await dismissCookies(page);
+        // Yerleşimin oturması için bir kare bekle
+        await page.waitForTimeout(300);
+
+        for (const problem of await findOverflow(page, selectors)) {
+          failures.push(`${width}px → ${problem}`);
+        }
+
+        // Tamamlayıcı kontrol: sayfa yatay olarak kaydırılabilir olmamalı
+        const scrolledX = await page.evaluate(() => {
+          window.scrollTo(99999, 0);
+          const x = Math.round(window.scrollX);
+          window.scrollTo(0, 0);
+          return x;
+        });
+        if (scrolledX > 0) failures.push(`${width}px → sayfa yatay olarak ${scrolledX}px kayıyor`);
+      }
+
+      expect(failures, failures.join('\n')).toEqual([]);
+    });
+  }
+});

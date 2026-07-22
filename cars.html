@@ -10,7 +10,9 @@
   <style>
     .cars-page-layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      /* minmax(0, ...): grid track'lerinin içeriğe göre genişleyip dar
+         ekranda taşmasını engeller (varsayılan min-width: auto sorunu) */
+      grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
       gap: 40px;
       margin-top: 50px;
     }
@@ -39,7 +41,7 @@
     }
     @media (max-width: 992px) {
       .cars-page-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .filter-sidebar {
         position: static;

@@ -31,7 +31,9 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
-      globals: { ...globals.node },
+      // E2E testleri Playwright'ın page.evaluate'i üzerinden tarayıcı
+      // bağlamında da kod çalıştırır (window, document, getComputedStyle).
+      globals: { ...globals.node, ...globals.browser },
     },
   },
   {
