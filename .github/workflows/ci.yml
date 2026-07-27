@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           # Yerel geliştirme ortamıyla aynı sürüm (npm 11 kilit çözümlemesi)
           node-version: 24
