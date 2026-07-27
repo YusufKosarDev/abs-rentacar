@@ -1,0 +1,62 @@
+name: CI (ağır)
+
+# Ağır doğrulamalar: E2E (Playwright) + Lighthouse.
+# Yalnızca kod/şablon/stil değiştiğinde koşar. Admin panelden gelen yayın
+# commit'leri sadece src/data/cars.json'a dokunduğu için bunları ATLAR
+# (Actions dakikası israfını önler); hafif koruma ci.yml'de her zaman koşar.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'src/data/cars.json'
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - 'src/data/cars.json'
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Bağımlılıkları kur
+        run: npm ci
+
+      - name: Playwright tarayıcısını kur
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E + erişilebilirlik testleri
+        run: npx playwright test
+
+      - name: Hata durumunda raporu yükle
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-sonuclari
+          path: test-results/
+          retention-days: 7
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Bağımlılıkları kur
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Lighthouse denetimi
+        run: npx --yes @lhci/cli autorun

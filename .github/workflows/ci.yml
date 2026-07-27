@@ -1,5 +1,8 @@
 name: CI
 
+# Her push/PR'da koşar (yalnızca cars.json değişen yayın commit'leri dahil):
+# hafif ama koruyucu doğrulama. Ağır işler (E2E + Lighthouse) ci-heavy.yml'de
+# ve yalnızca kod değiştiğinde koşar.
 on:
   push:
     branches: [main]
@@ -27,51 +30,6 @@ jobs:
       - name: Birim testler
         run: npm test
 
+      # Build; içinde validate-cars çalışır (bozuk cars.json'ı burada yakalar).
       - name: Build
         run: npm run build
-
-  e2e:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Bağımlılıkları kur
-        run: npm ci
-
-      - name: Playwright tarayıcısını kur
-        run: npx playwright install --with-deps chromium
-
-      - name: E2E + erişilebilirlik testleri
-        run: npx playwright test
-
-      - name: Hata durumunda raporu yükle
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-sonuclari
-          path: test-results/
-          retention-days: 7
-
-  lighthouse:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Bağımlılıkları kur
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Lighthouse denetimi
-        run: npx --yes @lhci/cli autorun
