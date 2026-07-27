@@ -9,6 +9,7 @@ import '@fontsource/dm-sans/600.css';
 import '@fontsource/dm-sans/700.css';
 
 import carsDataOriginal from './data/cars.json';
+import { buildCarsUrl, mergeBookingParams, pickupLabel } from './lib/booking-params.js';
 import { loadDynamicCarData } from './sheets.js';
 import { getDailyRate, calcRentalDays } from './lib/pricing.js';
 import { filterCars } from './lib/filters.js';
@@ -225,10 +226,10 @@ function setupConversionTracking() {
     }
   });
 
-  // Booking form submissions also open WhatsApp
+  // Booking form submissions -> araç listesine yönlendirme (dönüşüm olayı)
   const quickForm = document.getElementById('quick-booking-form');
   if (quickForm) {
-    quickForm.addEventListener('submit', () => trackEvent('whatsapp_click', { page: '/', source: 'quick_booking_form' }));
+    quickForm.addEventListener('submit', () => trackEvent('quick_search', { page: '/', source: 'quick_booking_form' }));
   }
 }
 
@@ -291,38 +292,52 @@ function setupNewsletterForms() {
   });
 }
 
-// Homepage quick booking form -> WhatsApp reservation request
+// Ana sayfa hızlı sorgulama formu -> araç listesi (cars.html).
+// Alış bilgisi (lokasyon + tarih) query parametresiyle taşınır; WhatsApp adımı
+// artık araç seçiminden sonra (kartlarda ve araç detayında) gerçekleşir.
 function setupQuickBookingForm() {
   const form = document.getElementById('quick-booking-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const fullname = form.querySelector('[name="fullname"]').value.trim();
-    const phone = form.querySelector('[name="phone"]').value.trim();
-    const pickupSelect = form.querySelector('[name="pickup"]');
-    const pickup = pickupSelect.options[pickupSelect.selectedIndex].text;
+    const pickup = form.querySelector('[name="pickup"]').value;
     const pickupDate = form.querySelector('[name="pickup_date"]').value;
-
-    const localLang = translations[currentLang] ? currentLang : 'en';
-    const message = localLang === 'tr'
-      ? `Merhaba, ABS Rent A Car. Web siteniz üzerinden araç kiralamak istiyorum:
-👤 Ad Soyad: ${fullname}
-📞 Telefon: ${phone}
-📍 Alış Yeri: ${pickup}
-📅 Alış Tarihi: ${pickupDate}
-
-Uygun araçlarınızı ve fiyat bilgisini paylaşabilir misiniz? Teşekkürler.`
-      : `Hello, ABS Rent A Car. I would like to rent a car via your website:
-👤 Name: ${fullname}
-📞 Phone: ${phone}
-📍 Pickup Location: ${pickup}
-📅 Pickup Date: ${pickupDate}
-
-Could you share your available cars and prices? Thank you.`;
-
-    window.open(`https://api.whatsapp.com/send?phone=905323318418&text=${encodeURIComponent(message)}`, '_blank');
+    window.location.href = buildCarsUrl(pickup, pickupDate, ROUTE_LANG);
   });
+}
+
+// Alış bilgisini araç sayfası bağlantılarına ve fiyat hesaplayıcı butonuna taşır
+// (cars.html kartları -> /arac/<id>.html -> car-details.html). İdempotenttir.
+function propagateBookingParams() {
+  const current = new URLSearchParams(window.location.search);
+  const params = {};
+  if (current.get('pickup')) params.pickup = current.get('pickup');
+  if (current.get('pickup_date')) params.pickup_date = current.get('pickup_date');
+  if (!params.pickup && !params.pickup_date) return;
+
+  document.querySelectorAll('a[href*="arac/"], a[href*="car-details.html"]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (href) link.setAttribute('href', mergeBookingParams(href, params));
+  });
+}
+
+// car-details.html fiyat hesaplayıcısını gelen alış bilgisiyle ön-doldurur.
+function prefillCalculatorFromParams() {
+  const params = new URLSearchParams(window.location.search);
+  const pickup = params.get('pickup');
+  const pickupDate = params.get('pickup_date');
+
+  const pickupSelect = document.getElementById('dt-pickup');
+  if (pickup && pickupSelect) {
+    const label = pickupLabel(pickup);
+    if (label) pickupSelect.value = label;
+  }
+  const dateInput = document.getElementById('dt-pickup-date');
+  if (pickupDate && dateInput) {
+    dateInput.value = pickupDate;
+    dateInput.dispatchEvent(new Event('change', { bubbles: true }));
+  }
 }
 
 // Async initializer: loads Google Sheets data then renders pages
@@ -343,7 +358,11 @@ async function initDynamicData() {
 
   if (document.getElementById('car-details-container')) {
     renderCarDetails();
+    prefillCalculatorFromParams();
   }
+
+  // Alış bilgisini araç bağlantıları boyunca taşı (tüm sayfalarda güvenli no-op).
+  propagateBookingParams();
 }
 
 // Setup Language

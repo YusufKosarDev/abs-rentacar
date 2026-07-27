@@ -38,6 +38,20 @@ test.describe('Ana sayfa', () => {
     const float = page.locator('.whatsapp-float');
     await expect(float).toHaveAttribute('href', /wa\.me\/905323318418/);
   });
+
+  test('hızlı sorgulama formu araç listesine yönlendirir (parametrelerle)', async ({ page }) => {
+    await page.goto('/');
+    await dismissCookies(page);
+    await page.locator('#qb-fullname').fill('Test Kullanıcı');
+    await page.locator('#qb-phone').fill('+905000000000');
+    await page.locator('#qb-pickup').selectOption('Konakli');
+    await page.locator('#qb-pickup-date').fill('2027-08-01');
+    await page.locator('#quick-booking-form button[type="submit"]').click();
+    await page.waitForURL(/cars\.html/);
+    const url = new URL(page.url());
+    expect(url.searchParams.get('pickup')).toBe('Konakli');
+    expect(url.searchParams.get('pickup_date')).toBe('2027-08-01');
+  });
 });
 
 test.describe('Araçlar sayfası', () => {
@@ -69,6 +83,13 @@ test.describe('Araç detay sayfası', () => {
     await page.locator('#dt-pickup-date').fill('2027-08-01');
     await page.locator('#dt-return-date').fill('2027-08-11');
     await expect(page.locator('.price-calc-amount')).toHaveText('€420');
+  });
+
+  test('ana sayfadan gelen alış bilgisi hesaplayıcıyı ön-doldurur', async ({ page }) => {
+    await page.goto('/car-details.html?id=dacia-duster&pickup=Konakli&pickup_date=2027-08-01');
+    await dismissCookies(page);
+    await expect(page.locator('#dt-pickup-date')).toHaveValue('2027-08-01');
+    await expect(page.locator('#dt-pickup')).toHaveValue('Konaklı Otelleri');
   });
 
   test('geçersiz araç kimliğinde dostane mesaj gösterir', async ({ page }) => {
