@@ -15,7 +15,7 @@
     "luggage": "2 Büyük, 1 Küçük",
     "luggageEng": "2 Large, 1 Small",
     "ac": true,
-    "pricePerDay": 35,
+    "pricePerDay": 36,
     "prices": {
       "1_3": 40,
       "4_7": 38,
@@ -244,12 +244,12 @@
       "22_29": 39,
       "30_plus": 37
     },
-    "description": "Açılır tentesiyle Alanya güneşinin tadını çıkaracağınız eğlenceli klasik jeep. Sahil turları ve kısa keşif gezileri için filomuzun en ekonomik seçeneği.",
-    "descriptionEng": "A fun classic jeep with a folding soft top to enjoy the Alanya sun. The most budget-friendly option in our fleet for coastal tours and short trips.",
     "image": "/images/cars/suzuki-samurai.jpg",
     "images": [
       "/images/cars/suzuki-samurai.jpg"
     ],
+    "description": "Açılır tentesiyle Alanya güneşinin tadını çıkaracağınız eğlenceli klasik jeep. Sahil turları ve kısa keşif gezileri için filomuzun en ekonomik seçeneği.",
+    "descriptionEng": "A fun classic jeep with a folding soft top to enjoy the Alanya sun. The most budget-friendly option in our fleet for coastal tours and short trips.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -288,12 +288,12 @@
       "22_29": 42,
       "30_plus": 40
     },
-    "description": "Geniş iç hacmi ve sürgülü kapılarıyla kalabalık aileler ve bol bagajlı yolculuklar için ideal, yakıt cimrisi dizel aile aracı.",
-    "descriptionEng": "A fuel-efficient diesel family van with a spacious interior and sliding doors, ideal for large families and luggage-heavy trips.",
     "image": "/images/cars/fiat-doblo.jpg",
     "images": [
       "/images/cars/fiat-doblo.jpg"
     ],
+    "description": "Geniş iç hacmi ve sürgülü kapılarıyla kalabalık aileler ve bol bagajlı yolculuklar için ideal, yakıt cimrisi dizel aile aracı.",
+    "descriptionEng": "A fuel-efficient diesel family van with a spacious interior and sliding doors, ideal for large families and luggage-heavy trips.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -332,12 +332,12 @@
       "22_29": 42,
       "30_plus": 40
     },
-    "description": "Kompakt dış boyutlarına rağmen şaşırtıcı iç genişliğe sahip, şehir içinde çevik ve ekonomik çok amaçlı araç.",
-    "descriptionEng": "A versatile vehicle that is agile and economical in the city, with surprising interior space despite its compact size.",
     "image": "/images/cars/fiat-fiorino.jpg",
     "images": [
       "/images/cars/fiat-fiorino.jpg"
     ],
+    "description": "Kompakt dış boyutlarına rağmen şaşırtıcı iç genişliğe sahip, şehir içinde çevik ve ekonomik çok amaçlı araç.",
+    "descriptionEng": "A versatile vehicle that is agile and economical in the city, with surprising interior space despite its compact size.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -376,12 +376,12 @@
       "22_29": 56,
       "30_plus": 53
     },
-    "description": "Otomatik vitesli, modern ve donanımlı hatchback. Şehir içi kullanım ve çiftler için pratik, park etmesi kolay bir seçim.",
-    "descriptionEng": "A modern, well-equipped automatic hatchback. A practical, easy-to-park choice for city driving and couples.",
     "image": "/images/cars/hyundai-i20.jpg",
     "images": [
       "/images/cars/hyundai-i20.jpg"
     ],
+    "description": "Otomatik vitesli, modern ve donanımlı hatchback. Şehir içi kullanım ve çiftler için pratik, park etmesi kolay bir seçim.",
+    "descriptionEng": "A modern, well-equipped automatic hatchback. A practical, easy-to-park choice for city driving and couples.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -420,12 +420,12 @@
       "22_29": 58,
       "30_plus": 54
     },
-    "description": "Uzun yolların konfor ustası: dizel ekonomisi, otomatik şanzıman ve geniş bagajıyla Antalya-Alanya hattının favorisi.",
-    "descriptionEng": "A long-distance comfort master: diesel economy, automatic transmission, and a large trunk make it a favorite on the Antalya-Alanya route.",
     "image": "/images/cars/renault-megane.jpg",
     "images": [
       "/images/cars/renault-megane.jpg"
     ],
+    "description": "Uzun yolların konfor ustası: dizel ekonomisi, otomatik şanzıman ve geniş bagajıyla Antalya-Alanya hattının favorisi.",
+    "descriptionEng": "A long-distance comfort master: diesel economy, automatic transmission, and a large trunk make it a favorite on the Antalya-Alanya route.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -464,12 +464,12 @@
       "22_29": 74,
       "30_plus": 70
     },
-    "description": "Honda güvenilirliği ve düşük yakıt tüketimini bir arada sunan, sessiz ve konforlu otomatik sedan.",
-    "descriptionEng": "A quiet, comfortable automatic sedan combining Honda reliability with low fuel consumption.",
     "image": "/images/cars/honda-city.jpg",
     "images": [
       "/images/cars/honda-city.jpg"
     ],
+    "description": "Honda güvenilirliği ve düşük yakıt tüketimini bir arada sunan, sessiz ve konforlu otomatik sedan.",
+    "descriptionEng": "A quiet, comfortable automatic sedan combining Honda reliability with low fuel consumption.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -508,12 +508,12 @@
       "22_29": 86,
       "30_plus": 82
     },
-    "description": "8 kişilik oturma düzeni ve dev bagaj hacmiyle kalabalık gruplar, aileler ve havalimanı transferleri için en pratik çözüm.",
-    "descriptionEng": "With seating for 8 and a huge luggage capacity, the most practical solution for large groups, families, and airport transfers.",
     "image": "/images/cars/vw-caravelle.jpg",
     "images": [
       "/images/cars/vw-caravelle.jpg"
     ],
+    "description": "8 kişilik oturma düzeni ve dev bagaj hacmiyle kalabalık gruplar, aileler ve havalimanı transferleri için en pratik çözüm.",
+    "descriptionEng": "With seating for 8 and a huge luggage capacity, the most practical solution for large groups, families, and airport transfers.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -552,12 +552,12 @@
       "22_29": 120,
       "30_plus": 113
     },
-    "description": "Akdeniz kıyısında üstü açık sürüş keyfi. Şık tasarımlı, otomatik vitesli cabrio ile tatilinize lüks katın.",
-    "descriptionEng": "Open-top driving pleasure on the Mediterranean coast. Add luxury to your holiday with this stylish automatic convertible.",
     "image": "/images/cars/opel-cascada.jpg",
     "images": [
       "/images/cars/opel-cascada.jpg"
     ],
+    "description": "Akdeniz kıyısında üstü açık sürüş keyfi. Şık tasarımlı, otomatik vitesli cabrio ile tatilinize lüks katın.",
+    "descriptionEng": "Open-top driving pleasure on the Mediterranean coast. Add luxury to your holiday with this stylish automatic convertible.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
@@ -596,12 +596,12 @@
       "22_29": 157,
       "30_plus": 148
     },
-    "description": "Filomuzun amiral gemisi: BMW sürüş dinamikleri ve açılır tavanıyla unutulmaz bir Alanya deneyimi için premium cabrio.",
-    "descriptionEng": "The flagship of our fleet: a premium convertible with BMW driving dynamics and a folding roof for an unforgettable Alanya experience.",
     "image": "/images/cars/bmw-4-cabrio.jpg",
     "images": [
       "/images/cars/bmw-4-cabrio.jpg"
     ],
+    "description": "Filomuzun amiral gemisi: BMW sürüş dinamikleri ve açılır tavanıyla unutulmaz bir Alanya deneyimi için premium cabrio.",
+    "descriptionEng": "The flagship of our fleet: a premium convertible with BMW driving dynamics and a folding roof for an unforgettable Alanya experience.",
     "features": [
       "Sınırsız KM",
       "Muafiyetli Kasko",
