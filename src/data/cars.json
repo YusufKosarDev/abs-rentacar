@@ -15,7 +15,7 @@
     "luggage": "2 Büyük, 1 Küçük",
     "luggageEng": "2 Large, 1 Small",
     "ac": true,
-    "pricePerDay": 36,
+    "pricePerDay": 35,
     "prices": {
       "1_3": 40,
       "4_7": 38,
