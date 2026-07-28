@@ -7,7 +7,10 @@ Konaklı and the Gazipaşa / Antalya airport corridor on the Turkish Mediterrane
 
 **Live:** <https://abs-rentacar.com>
 
-![ABS Rent A Car homepage](docs/home.png)
+![Demo — homepage quick-search flowing into a pre-filled price calculator](docs/media/frontend.gif)
+
+> The homepage quick-search routes visitors to the fleet, carrying the chosen pickup location
+> and date into the selected vehicle's price calculator. ([watch as webm](docs/media/frontend.webm))
 
 ---
 
