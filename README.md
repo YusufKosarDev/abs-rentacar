@@ -68,9 +68,10 @@ Two consequences fall out of this for free:
 - The build's `validate-cars` schema check (below) runs on every publish, so a malformed
   edit fails the build and the previous good site stays live — the panel cannot corrupt
   production.
-- The admin backend lives in a **separate, private repository**
-  (`abs-rentacar-admin`, Spring Boot + Postgres) precisely so its deploys can never touch
-  this site's build. That repo carries its own architecture and security write-up.
+- The admin backend lives in a **separate repository**
+  ([`abs-rentacar-admin`](https://github.com/YusufKosarDev/abs-rentacar-admin), Spring Boot +
+  Postgres) precisely so its deploys can never touch this site's build. That repo carries its
+  own architecture and security write-up.
 
 ---
 
@@ -233,10 +234,11 @@ calculator and a carousel.
 ## The admin panel
 
 Fleet and price data is edited in a companion Spring Boot application that publishes to
-this repository (the architecture section above). It is a **separate, private repository**
-— `abs-rentacar-admin` — kept private because it holds the deploy pipeline, not because the
-code is secret; it has its own README covering session auth, brute-force protection, the
-GitHub Contents API publish flow and its honest limitations.
+this repository (the architecture section above). It is a **separate repository** —
+[`abs-rentacar-admin`](https://github.com/YusufKosarDev/abs-rentacar-admin) — isolated from
+this build precisely so its deploys can never touch the live site. It has its own README
+covering session auth, brute-force protection, the GitHub Contents API publish flow and its
+honest limitations.
 
 `src/data/cars.json` in this repo is the published artefact of that pipeline. It can still
 be hand-edited in a pinch (a commit rebuilds the site), and `src/sheets.js` retains an
